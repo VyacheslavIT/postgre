@@ -64,3 +64,10 @@ default_transaction_isolation
 ```sql
 insert into persons(first_name, second_name) values('sergey', 'sergeev');
 ```
+сделать select from persons во второй сессии
+
+```sql
+select from persons;
+```
+
+
