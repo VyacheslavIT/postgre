@@ -2,14 +2,14 @@
 
 *pg_lsclusters*
 
-> ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/71aeacb2-7ab3-4566-8a69-0e5c1f337e80)
+ ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/71aeacb2-7ab3-4566-8a69-0e5c1f337e80)
 
 ------------------------------------------------
 запустить везде psql из под пользователя postgres
 
 *sudo -u postgres psql*
 
-> ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/17159052-2a96-4659-a12e-12d32004cccc)
+ ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/17159052-2a96-4659-a12e-12d32004cccc)
 ```sql
 -----------------------------------------------
    Name    |  Owner   | Encoding |   Collate   |    Ctype    | ICU Locale | Locale Provider |   Access privileges   
@@ -26,7 +26,7 @@
 
 *\set AUTOCOMMIT OFF*
 
-> ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/555de060-d867-465e-906b-5cf06c428f6c)
+ ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/555de060-d867-465e-906b-5cf06c428f6c)
 
 ----------------------------------------------
 в первой сессии создать новую таблицу и наполнить ее данными
