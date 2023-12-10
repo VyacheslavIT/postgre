@@ -77,7 +77,7 @@ select * from persons;
 
 сделать
 ```sql
-select from persons
+select * from persons
 ```
  во второй сессии
 
