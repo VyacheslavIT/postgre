@@ -23,11 +23,11 @@
 > ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/555de060-d867-465e-906b-5cf06c428f6c)
 
 ----------------------------------------------
-```
+```SQL
 1. create table persons(id serial, first_name text, second_name text); insert into persons(first_name, second_name)
 values('ivan', 'ivanov'); insert into persons(first_name, second_name) values('petr', 'petrov');
 ```
-```
+```SQL
 test=# select * from persons;
  id | first_name | second_name 
 ----+------------+-------------
