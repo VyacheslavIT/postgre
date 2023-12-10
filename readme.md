@@ -59,3 +59,8 @@ default_transaction_isolation
 (1 row)
 
 ```
+------------------------------
+в первой сессии добавить новую запись insert into persons(first_name, second_name) values('sergey', 'sergeev');
+```sql
+insert into persons(first_name, second_name) values('sergey', 'sergeev');
+```
