@@ -47,3 +47,9 @@ test=# select * from persons;
 (2 rows)
 
 ```
+-----------------------------------------------
+посмотреть текущий уровень изоляции: show transaction isolation level
+
+```sql
+SHOW default_transaction_isolation;
+```
