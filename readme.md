@@ -22,6 +22,8 @@
  test      | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
 ```
 -----------------------------------------------
+выключить auto commit
+
 *\set AUTOCOMMIT OFF*
 
 > ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/555de060-d867-465e-906b-5cf06c428f6c)
