@@ -28,10 +28,11 @@
 values('ivan', 'ivanov'); insert into persons(first_name, second_name) values('petr', 'petrov');
 ```
 ```
-postgres=# select * from persons;
+test=# select * from persons;
  id | first_name | second_name 
 ----+------------+-------------
   1 | ivan       | ivanov
   2 | petr       | petrov
 (2 rows)
+
 ```
