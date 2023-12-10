@@ -107,4 +107,4 @@ test=*# select* from persons;
 
 завершить первую транзакцию - commit;
 
-сделать select from persons во второй сессии
+сделать select * from persons во второй сессии
