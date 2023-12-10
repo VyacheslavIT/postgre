@@ -52,4 +52,10 @@ test=# select * from persons;
 
 ```sql
 SHOW default_transaction_isolation;
+
+default_transaction_isolation 
+-------------------------------
+ read committed
+(1 row)
+
 ```
