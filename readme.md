@@ -106,3 +106,5 @@ test=*# select* from persons;
 > * новую запись не вижу, в данный момент уровень изоляции  repeatable read.
 
 завершить первую транзакцию - commit;
+
+сделать select from persons во второй сессии
