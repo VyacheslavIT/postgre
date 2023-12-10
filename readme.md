@@ -24,13 +24,14 @@
 
 ----------------------------------------------
 ```
-1. create table persons(id serial, first_name text, second_name text); insert into persons(first_name, second_name) values('ivan', 'ivanov'); insert into persons(first_name, second_name) values('petr', 'petrov');
+1. create table persons(id serial, first_name text, second_name text); insert into persons(first_name, second_name)
+values('ivan', 'ivanov'); insert into persons(first_name, second_name) values('petr', 'petrov');
 ```
-`
+```
 postgres=# select * from persons;
  id | first_name | second_name 
 ----+------------+-------------
   1 | ivan       | ivanov
   2 | petr       | petrov
 (2 rows)
-`
+```
