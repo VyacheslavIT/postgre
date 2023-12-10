@@ -82,4 +82,12 @@ test=# select * from persons;
   3 | sergey     | sergeev
 (3 rows)
 ```
-
+------------------------------
+начать новые транзакции но уже repeatable read транзации 
+```sql
+ set transaction isolation level repeatable read;
+```
+в первой сессии добавить новую запись
+```sql
+insert into persons(first_name, second_name) values('sveta', 'svetova');
+```
