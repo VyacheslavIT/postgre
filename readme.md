@@ -5,6 +5,8 @@
 > ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/71aeacb2-7ab3-4566-8a69-0e5c1f337e80)
 
 ------------------------------------------------
+запустить везде psql из под пользователя postgres
+
 *sudo -u postgres psql*
 
 > ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/17159052-2a96-4659-a12e-12d32004cccc)
