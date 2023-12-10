@@ -4,6 +4,7 @@ pg_lsclusters
 
 ------------------------------------------------
 sudo -u postgres psql
+
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/17159052-2a96-4659-a12e-12d32004cccc)
 
 -----------------------------------------------
