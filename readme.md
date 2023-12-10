@@ -51,7 +51,7 @@ test=# select * from persons;
 посмотреть текущий уровень изоляции: show transaction isolation level
 
 ```sql
-SHOW default_transaction_isolation;
+test=# SHOW default_transaction_isolation;
 
 default_transaction_isolation 
 -------------------------------
