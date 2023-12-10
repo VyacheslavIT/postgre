@@ -91,3 +91,6 @@ test=# select * from persons;
 ```sql
 insert into persons(first_name, second_name) values('sveta', 'svetova');
 ```
+сделать select* from persons во второй сессии
+
+видите ли вы новую запись и если да то почему?
