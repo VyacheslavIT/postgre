@@ -26,8 +26,11 @@
 
 * удалить контейнер с сервером
   
-![image](https://github.com/VyacheslavIT/postgre/assets/136000255/6ddb39bf-f8ee-4dd2-a741-e3e880a2b0cd)
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/6ddb39bf-f8ee-4dd2-a741-e3e880a2b0cd)
 
 -------------------------------------
 
-  
+* создать его заново
+
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/182aee12-a0ef-49df-9a03-82c62b24bfb5)
+ 
