@@ -16,3 +16,7 @@
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/ad16690d-772f-40f1-983a-608bc0bb036f)
 ------------------------------------
 * подключится из контейнера с клиентом к контейнеру с сервером и сделать таблицу с парой строк
+  
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/3e471dc9-4fb5-4167-bf4f-a0dd9a64f3fc)
+
+------------------------------------
