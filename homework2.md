@@ -9,3 +9,5 @@
 * развернуть контейнер с PostgreSQL 15 смонтировав в него /var/lib/postgresql
   
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/ede9bcef-9263-41a3-ab99-eccddb47d292)
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/ad16690d-772f-40f1-983a-608bc0bb036f)
