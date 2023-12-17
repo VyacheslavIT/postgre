@@ -33,4 +33,8 @@
 * создать его заново
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/182aee12-a0ef-49df-9a03-82c62b24bfb5)
- 
+ ---------------------------
+ * подключится снова из контейнера с клиентом к контейнеру с сервером
+
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/e1c13f91-bafd-42be-93a9-9b7f5c865aa5)
+
