@@ -37,4 +37,12 @@
  * подключится снова из контейнера с клиентом к контейнеру с сервером
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/e1c13f91-bafd-42be-93a9-9b7f5c865aa5)
+* проверить, что данные остались на месте
 
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/70e554c7-6fc8-4650-91c0-f1708040f054)
+
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/96296ca7-691f-4f55-ac4a-5c03d84c567c)
+
+
+
+  
