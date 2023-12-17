@@ -18,11 +18,12 @@
 ------------------------------------
 * подключится из контейнера с клиентом к контейнеру с сервером и сделать таблицу с парой строк
   *sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres*
-  ```sql
+  
+```sql
 CREATE TABLE test (i serial, amount int);
 INSERT INTO test(amount) VALUES (100);
 INSERT INTO test(amount) VALUES (500);
-  ```
+```
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/3e471dc9-4fb5-4167-bf4f-a0dd9a64f3fc)
 
