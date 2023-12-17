@@ -5,7 +5,7 @@
 * поставить на нем Docker Engine
   
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/7d39f4b1-e138-4455-bdb2-bd4f11d85f4c)
-
+--------------------------
 * развернуть контейнер с PostgreSQL 15 смонтировав в него /var/lib/postgresql
   
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/ede9bcef-9263-41a3-ab99-eccddb47d292)
@@ -14,5 +14,5 @@
 
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/ad16690d-772f-40f1-983a-608bc0bb036f)
-
+------------------------------------
 * подключится из контейнера с клиентом к контейнеру с сервером и сделать таблицу с парой строк
