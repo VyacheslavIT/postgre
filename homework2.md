@@ -33,8 +33,10 @@ INSERT INTO test(amount) VALUES (500);
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/5b788b3f-d6b4-43e0-b2dc-5ec3b3d503ed)
 
 * удалить контейнер с сервером
-sudo docker stop
-sudo docker rm
+  
+sudo docker stop 77b977a23444
+
+sudo docker rm 77b977a23444
   
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/6ddb39bf-f8ee-4dd2-a741-e3e880a2b0cd)
 
