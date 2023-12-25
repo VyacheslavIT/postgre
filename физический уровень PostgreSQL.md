@@ -109,3 +109,15 @@ drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_xact
 -rw------- 1 postgres postgres  130 Dec 25 20:51 postmaster.opts
 --------------------------------
 * попытайтесь запустить кластер - sudo -u postgres pg_ctlcluster 15 main start
+
+  sudo -u postgres pg_ctlcluster 15 main start
+  
+Warning: the cluster will not be running as a systemd service. Consider using systemctl:
+  sudo systemctl start postgresql@15-main
+  
+slava@vm1:~$ pg_lsclusters
+
+Ver Cluster Port Status Owner    Data directory    Log file
+
+15  main    5432 online postgres /mnt/data/15/main /var/log/postgresql/postgresql-15-main.log
+
