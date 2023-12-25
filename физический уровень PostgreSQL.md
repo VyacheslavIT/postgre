@@ -31,3 +31,6 @@ postgres=# select * from test;
 postgres=#
 ```
 * остановите postgres например через sudo -u postgres pg_ctlcluster 15 main stop
+
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/7f972d4c-8ef0-4156-8fb4-7cf2280347eb)
+  
