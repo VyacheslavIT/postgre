@@ -17,3 +17,16 @@
 * postgres=# create table test(c1 text);
 * postgres=# insert into test values('1');
 * \q
+```sql
+postgres=# create table test(c1 text);
+CREATE TABLE
+postgres=# insert into test values('1');
+INSERT 0 1
+postgres=# select * from test;
+ c1 
+----
+ 1
+(1 row)
+
+postgres=#
+```
