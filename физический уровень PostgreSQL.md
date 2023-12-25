@@ -39,7 +39,7 @@ postgres=#
 
 * создайте новый диск к ВМ размером 10GB
 
-*ls -l |grep sd*
+*ls -l | grep sd*
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/a68a8677-b8ee-418b-9c1f-f601c0e0fb02)
 
