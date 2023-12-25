@@ -9,3 +9,8 @@
 >15  main    5432 online postgres /var/lib/postgresql/15/main /var/log/postgresql/postgresql-15-main.log
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/7e28e658-2458-4e38-9b5e-72c03865d6bd)
+-----------------------------
+* зайдите из под пользователя postgres в psql и сделайте произвольную таблицу с произвольным содержимым
+* postgres=# create table test(c1 text);
+* postgres=# insert into test values('1');
+* \q
