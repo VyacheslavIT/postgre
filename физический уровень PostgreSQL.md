@@ -44,7 +44,10 @@ postgres=#
 перезагрузите инстанс и убедитесь, что диск остается примонтированным (если не так смотрим в сторону fstab)
 
 *ls -l | grep sd*
+
 *mount | grep sdb*
+
+* cat /etc/fstab *
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/a68a8677-b8ee-418b-9c1f-f601c0e0fb02)
 
