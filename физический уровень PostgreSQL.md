@@ -65,7 +65,9 @@ postgres=#
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/eba31f3a-ebf3-4ba4-9dee-f27ff1ce0577)
 
 root@vm1:/mnt/data/main# ls -l
+
 total 80
+
 drwx------ 6 postgres postgres 4096 Dec 25 21:51 base
 
 drwx------ 2 postgres postgres 4096 Dec 25 21:52 global
