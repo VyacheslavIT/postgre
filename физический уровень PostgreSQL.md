@@ -53,4 +53,8 @@ postgres=#
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/1338dcd4-b1c4-4444-a2c6-75d10af3f450)
 
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/6bba6047-46aa-46c6-8621-b951296e2481)
+
+
+
 
