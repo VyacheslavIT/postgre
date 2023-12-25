@@ -107,3 +107,5 @@ drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_xact
 -rw------- 1 postgres postgres   88 Dec 24 19:44 postgresql.auto.conf
 
 -rw------- 1 postgres postgres  130 Dec 25 20:51 postmaster.opts
+--------------------------------
+* попытайтесь запустить кластер - sudo -u postgres pg_ctlcluster 15 main start
