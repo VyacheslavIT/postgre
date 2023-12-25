@@ -61,5 +61,5 @@ postgres=#
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/4c362ada-b85f-4622-8cfd-53c5a04a9dcd)
 ------------------------------
-перенесите содержимое /var/lib/postgres/15 в /mnt/data - mv /var/lib/postgresql/15/mnt/data
+* перенесите содержимое /var/lib/postgres/15 в /mnt/data - mv /var/lib/postgresql/15/mnt/data
 
