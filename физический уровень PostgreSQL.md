@@ -67,22 +67,41 @@ postgres=#
 root@vm1:/mnt/data/main# ls -l
 total 80
 drwx------ 6 postgres postgres 4096 Dec 25 21:51 base
+
 drwx------ 2 postgres postgres 4096 Dec 25 21:52 global
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_commit_ts
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_dynshmem
+
 drwx------ 4 postgres postgres 4096 Dec 25 22:01 pg_logical
+
 drwx------ 4 postgres postgres 4096 Dec 24 19:44 pg_multixact
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_notify
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_replslot
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_serial
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_snapshots
+
 drwx------ 2 postgres postgres 4096 Dec 25 22:01 pg_stat
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_stat_tmp
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_subtrans
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_tblspc
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_twophase
+
 -rw------- 1 postgres postgres    3 Dec 24 19:44 PG_VERSION
+
 drwx------ 3 postgres postgres 4096 Dec 24 19:44 pg_wal
+
 drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_xact
+
 -rw------- 1 postgres postgres   88 Dec 24 19:44 postgresql.auto.conf
+
 -rw------- 1 postgres postgres  130 Dec 25 20:51 postmaster.opts
