@@ -111,14 +111,13 @@ drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_xact
 --------------------------------
 * попытайтесь запустить кластер - sudo -u postgres pg_ctlcluster 15 main start
 
-  *sudo -u postgres pg_ctlcluster 15 main start*
-
-slava@vm1:~$ sudo -u postgres pg_ctlcluster 15 main start
-Error: /var/lib/postgresql/15/main is not accessible or does not exist
-
 * напишите получилось или нет и почему
 
 >Кластер не получилось запустить, появилась ошибка, так как мы переместили файлы БД в другую деректорию.
+
+> slava@vm1:~$ sudo -u postgres pg_ctlcluster 15 main start
+
+> Error: /var/lib/postgresql/15/main is not accessible or does not exist
 
 ------------------------------------------
 
