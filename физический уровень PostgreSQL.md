@@ -125,7 +125,8 @@ postgres=# show data_directory;
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/4da1d00c-f628-4aa4-ae13-61c0055152b2)
 
 
->
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/9f8cfd37-2601-4f78-b8e8-1c49537f347c)
+
 
 
 
