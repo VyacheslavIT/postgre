@@ -95,5 +95,13 @@ postgres=#
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/e369ade6-211b-41de-b43d-99004465e68a)
 
+```sql
+postgres=# select * from test;
+ c1 
+----
+ 1
+(1 row)
+```
+таблица на месте
 
 
