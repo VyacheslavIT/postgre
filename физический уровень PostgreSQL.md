@@ -112,13 +112,21 @@ drwx------ 2 postgres postgres 4096 Dec 24 19:44 pg_xact
 * попытайтесь запустить кластер - sudo -u postgres pg_ctlcluster 15 main start
 
   *sudo -u postgres pg_ctlcluster 15 main start*
-  
-Warning: the cluster will not be running as a systemd service. Consider using systemctl:
-  sudo systemctl start postgresql@15-main
-  
-*pg_lsclusters*
 
-Ver Cluster Port Status Owner    Data directory    Log file
+slava@vm1:~$ sudo -u postgres pg_ctlcluster 15 main start
+Error: /var/lib/postgresql/15/main is not accessible or does not exist
 
-15  main    5432 online postgres /mnt/data/15/main /var/log/postgresql/postgresql-15-main.log
+* напишите получилось или нет и почему
+
+>Кластер не получилось запустить, появилась ошибка, так как мы переместили бд в другую деректорию.
+
+------------------------------------------
+
+* задание: найти конфигурационный параметр в файлах раположенных в /etc/postgresql/15/main который надо поменять и поменяйте его
+
+* напишите что и почему поменяли
+
+  
+
+
 
