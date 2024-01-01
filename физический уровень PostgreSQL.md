@@ -124,3 +124,13 @@ postgres=# show data_directory;
 
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/d5c75a2e-d422-48f7-8568-22e08dbb5c9c)
 
+```sql
+postgres=# select * from test;
+ c1 
+----
+ 1
+(1 row)
+
+postgres=# 
+```
+
