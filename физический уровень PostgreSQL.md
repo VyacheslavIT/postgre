@@ -127,9 +127,14 @@ Error: /var/lib/postgresql/15/main is not accessible or does not exist
 * напишите что и почему поменяли
 
 > Указал новый путь в файле postgresql.conf
+
 > В разделе File Location, прописал новый путь data_directory куда перенесли файлы БД.  
 
-  
+------------------------------------------
+* попытайтесь запустить кластер - sudo -u postgres pg_ctlcluster 15 main start
+
+* напишите получилось или нет и почему
+
 
 
 
