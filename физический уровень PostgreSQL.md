@@ -103,5 +103,13 @@ postgres=# select * from test;
 (1 row)
 ```
 таблица на месте
+```sql
+postgres=# show data_directory;
+  data_directory   
+-------------------
+ /mnt/data/15/main
+(1 row)
+```
+новый путь 
 
 
