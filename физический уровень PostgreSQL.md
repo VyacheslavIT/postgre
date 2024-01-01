@@ -135,6 +135,9 @@ Error: /var/lib/postgresql/15/main is not accessible or does not exist
 
 * напишите получилось или нет и почему
 
+>Кластер запустился
+
+>![image](https://github.com/VyacheslavIT/postgre/assets/136000255/e369ade6-211b-41de-b43d-99004465e68a)
 
 
 
