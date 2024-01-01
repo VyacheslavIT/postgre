@@ -122,6 +122,9 @@ postgres=# show data_directory;
 >На второй виртуальной машине добавил данный диск и включил машину, далее подмонтировал данный диск в  созданную папку data в директории mnt.
 >Дал права postgres на папку data, остановил кластер,в файле postgresql.conf указал новый путь к data файлу, запустил кластер.
 
+>
+
+
 >![image](https://github.com/VyacheslavIT/postgre/assets/136000255/d5c75a2e-d422-48f7-8568-22e08dbb5c9c)
 
 ```sql
@@ -133,4 +136,12 @@ postgres=# select * from test;
 
 postgres=# 
 ```
+```sql
+postgres=# show data_directory;
+  data_directory   
+-------------------
+ /mnt/data/15/main
+(1 row)
 
+postgres=# 
+```
