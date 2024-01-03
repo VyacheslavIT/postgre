@@ -265,13 +265,13 @@ ERROR:  permission denied for table t1
 Чтобы в дальнейшим видеть вновь созданные таблицы выполняем ALTER default privileges in SCHEMA testnm grant SELECT on TABLES to readonly;
 
 * сделайте select * from testnm.t1;
-
+```sql
   testdb=> select * from testnm.t1;
  c1 
 ----
   1
 (1 row)
-
+```
 
 
 
