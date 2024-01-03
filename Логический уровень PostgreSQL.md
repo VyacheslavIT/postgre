@@ -245,7 +245,11 @@ testdb=# select * from testnm.t1;
 (1 row)
 ```
 
+* зайдите под пользователем testread в базу данных testdb
+  
+* сделайте select * from testnm.t1;
 
+  
   
 
   
