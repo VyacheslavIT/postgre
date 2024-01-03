@@ -255,13 +255,16 @@ testdb=# select * from testnm.t1;
 select * from testnm.t1;
 ERROR:  permission denied for table t1
 ``` 
-* есть идеи почему? если нет - смотрите шпаргалку
+* есть идеи почему? 
 
 >Мы выдавали права для уже созданных обектов, таблицу t1 мы пересоздали занового  
 
 * как сделать так чтобы такое больше не повторялось?
-  
-ALTER default privileges in SCHEMA testnm grant SELECT on TABLES to readonly;
+
+Сначала выполняем GRANT SELECT ON ALL TABLES IN SCHEMA testnm TO readonly; чтобы увидеть созданную заного таблицу  t1 
+Чтобы в дальнейшим видить вновь созданные таблицы выполняем ALTER default privileges in SCHEMA testnm grant SELECT on TABLES to readonly;
+
+и заного дать 
 
 
   
