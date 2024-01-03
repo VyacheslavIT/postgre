@@ -7,8 +7,8 @@
   *sudo -u postgres psql*
   
 *   создайте новую базу данных testdb
-   
-  ``` sql
+
+``` sql
 create database testdb;
 ```
 
@@ -26,3 +26,14 @@ postgres=# \l
  testdb    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
 (4 rows)
 ```
+
+* зайдите в созданную базу данных под пользователем postgres
+  
+```sql
+postgres=# \c tsetdb
+connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  database "tsetdb" does not exist
+Previous connection kept
+postgres=# \c testdb
+You are now connected to database "testdb" as user "postgres".
+testdb=# 
+``` 
