@@ -293,8 +293,6 @@ ERROR:  permission denied for schema public
 *а как так? нам же никто прав на создание таблиц и insert в них под ролью readonly?
 
 
-
-
 ```sql
 psql -h localhost -p 5433 -d testdb -U testread;
 Password for user testread: 
@@ -314,8 +312,8 @@ testdb=>
 
 Что убрать данную возможность нужно выполнить следующее:
 
-REVOKE CREATE on SCHEMA public FROM public; 
-Эта инструкция отзывает право создания объектов (CREATE) в схеме public у роли public. 
+REVOKE CREATE ON SCHEMA public FROM PUBLIC; 
+Эта инструкция отзывает право создания объектов (CREATE) в схеме public у всех ролей. 
 То есть, после выполнения этой инструкции, пользователи с ролью public не смогут создавать новые таблицы, функции, триггеры и другие объекты в схеме public.
 
 REVOKE ALL on DATABASE testdb FROM public; 
@@ -323,4 +321,16 @@ REVOKE ALL on DATABASE testdb FROM public;
 Эта инструкция отзывает все права (ALL) на базу данных testdb у роли public. 
 После выполнения этой инструкции пользователи с ролью public потеряют доступ к базе данных testdb и не смогут выполнять в ней никакие операции.
 
+* теперь попробуйте выполнить команду create table t3(c1 integer); insert into t2 values (2);
 
+```sql
+testdb=> create table t3(c1 integer);
+ERROR:  permission denied for schema public
+LINE 1: create table t3(c1 integer);
+```
+* расскажите что получилось и почему
+
+Появилась ошибка, так как раннее были отобраны права на создания в схеме pablic.
+  
+ERROR:  permission denied for schema public
+  
