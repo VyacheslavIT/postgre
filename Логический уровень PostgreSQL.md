@@ -280,5 +280,22 @@ ERROR:  permission denied for schema public
 Использовал 15 версию postgresql.
 В PostgreSQL 15 права на создание таблиц (CREATE TABLE) по умолчанию отозваны у роли PUBLIC. Роли PUBLIC оставлено только право на использование объектов (USAGE). Это изменение призвано повысить безопасность базы данных и предотвратить случайное создание ненужных таблиц. Если  нужно создать таблицу, нужно предоставить себе соответствующие права, либо использовать другую роль с необходимыми правами.
 
+Установил 14 версию 
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/505b0bc4-01da-4054-8b05-67bf7e264d7d)
+
+```sql
+psql -h localhost -p 5433 -d testdb -U testread;
+Password for user testread: 
+psql (15.5 (Ubuntu 15.5-1.pgdg23.10+1), server 14.10 (Ubuntu 14.10-1.pgdg23.10+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+Type "help" for help.
+
+testdb=> create table t2(c1 integer);
+CREATE TABLE
+testdb=> insert into t2 values (2);
+INSERT 0 1
+testdb=> 
+```
 
   
