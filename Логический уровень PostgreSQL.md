@@ -112,6 +112,13 @@ GRANT
 create user testread password 'test123';
 CREATE ROLE
 
+SELECT usename FROM pg_user where usename = 'testread';
+ usename  
+----------
+ testread
+(1 row)
+
+
 ``` 
   
 * дайте роль readonly пользователю testread
