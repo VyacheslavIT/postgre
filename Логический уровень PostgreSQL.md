@@ -105,4 +105,4 @@ GRANT
 CREATE USER testread PASSWORD 'test123';
 ``` 
   
-
+* дайте роль readonly пользователю testread
