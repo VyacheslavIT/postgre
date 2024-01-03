@@ -248,7 +248,13 @@ testdb=# select * from testnm.t1;
 * зайдите под пользователем testread в базу данных testdb
   
 * сделайте select * from testnm.t1;
-
+  
+* получилось?
+  
+```sql
+select * from testnm.t1;
+ERROR:  permission denied for table t1
+``` 
   
   
 
