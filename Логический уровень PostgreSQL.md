@@ -171,4 +171,15 @@ testdb=> \dt
 ```
 Права мы выдавали на схему testnm, по этому и нет прав чтения данной таблицы
 
+* посмотрите на список таблиц
+```sql
+testdb=> \dt
+        List of relations
+ Schema | Name | Type  |  Owner   
+--------+------+-------+----------
+ public | t1   | table | postgres
+(1 row)
+```
+  
+
 
