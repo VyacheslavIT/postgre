@@ -265,6 +265,7 @@ ERROR:  permission denied for table t1
 Чтобы в дальнейшим видеть вновь созданные таблицы выполняем ALTER default privileges in SCHEMA testnm grant SELECT on TABLES to readonly;
 
 * сделайте select * from testnm.t1;
+  
 ```sql
   testdb=> select * from testnm.t1;
  c1 
@@ -275,6 +276,7 @@ ERROR:  permission denied for table t1
 * теперь попробуйте выполнить команду create table t2(c1 integer); insert into t2 values (2);
   
 testdb=> create table t2(c1 integer);
+
 ERROR:  permission denied for schema public
 
 Использовал 15 версию postgresql.
