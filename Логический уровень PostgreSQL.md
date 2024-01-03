@@ -150,7 +150,7 @@ testdb=>  select * from t1;
 ERROR:  permission denied for table t1
 testdb=> 
 ```
-получилось? 
+* получилось? 
 
 Нет
 
