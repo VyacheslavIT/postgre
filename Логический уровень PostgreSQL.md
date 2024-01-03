@@ -273,7 +273,12 @@ ERROR:  permission denied for table t1
 (1 row)
 ```
 * теперь попробуйте выполнить команду create table t2(c1 integer); insert into t2 values (2);
+  
+testdb=> create table t2(c1 integer);
+ERROR:  permission denied for schema public
 
+Использовал 15 версию postgresql.
+В PostgreSQL 15 права на создание таблиц (CREATE TABLE) по умолчанию отозваны у роли PUBLIC. Роли PUBLIC оставлено только право на использование объектов (USAGE). Это изменение призвано повысить безопасность базы данных и предотвратить случайное создание ненужных таблиц. Если  нужно создать таблицу, нужно предоставить себе соответствующие права, либо использовать другую роль с необходимыми правами.
 
 
   
