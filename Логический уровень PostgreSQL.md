@@ -80,6 +80,13 @@ testdb=# select * from t1;
 ```sql
 create role readonly;
 CREATE ROLE
+
+SELECT rolname FROM pg_roles where rolname = 'readonly';
+ rolname  
+----------
+ readonly
+(1 row)
+
 ```
 
 ```sql
