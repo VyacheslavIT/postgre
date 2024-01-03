@@ -141,3 +141,11 @@ Type "help" for help.
 
 testdb=> 
 ```
+
+* сделайте select * from t1;
+  
+```sql
+testdb=>  select * from t1;
+ERROR:  permission denied for table t1
+testdb=> 
+```
