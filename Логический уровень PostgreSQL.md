@@ -183,7 +183,7 @@ testdb=> \dt
 
 * а почему так получилось с таблицей (если делали сами и без шпаргалки то может у вас все нормально)
   
- У нас нет схемы пользовательсой, а так как мы явно не указывали схему по умолчанию табличка попала в схуму public
+ Нет пользовательсой схемы, а так как мы явно не указывали схему по умолчанию табличка попала в схему public.
 
 ```sql 
 postgres=# SELECT current_schemas(true);
@@ -202,5 +202,23 @@ postgres=# SHOW search_path;
 
 ```
  
+* вернитесь в базу данных testdb под пользователем postgres
 
+```sql
+postgres=# \c testdb
+You are now connected to database "testdb" as user "postgres".
+testdb=# select * from t1;
+ c1 
+----
+  1
+(1 row)
+
+testdb=#
+```
+* удалите таблицу t1
+  
+```sql
+testdb=# drop table t1;
+DROP TABLE
+``` 
 
