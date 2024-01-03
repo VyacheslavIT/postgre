@@ -95,6 +95,10 @@ GRANT
 
 * дайте новой роли право на select для всех таблиц схемы testnm
 
+```sql
+GRANT SELECT ON ALL TABLES IN SCHEMA testnm TO readonly;
+GRANT
+```
   
   
 
