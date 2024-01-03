@@ -75,7 +75,7 @@ testdb=# select * from t1;
 ```
 * создайте новую роль readonly
 
-* дайте новой роли право на подключение к базе данных testdb
+
   
 ```sql
 create role readonly;
@@ -89,7 +89,8 @@ SELECT * FROM pg_roles where rolname = 'readonly';
 
 
 ```
-
+* дайте новой роли право на подключение к базе данных testdb
+  
 ```sql
 GRANT CONNECT ON DATABASE testdb TO readonly;
 GRANT
