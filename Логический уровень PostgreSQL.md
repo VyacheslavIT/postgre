@@ -160,6 +160,14 @@ ERROR:  permission denied for table t1
 у вас есть идеи почему? ведь права то дали?
 
 Данная таблица расположена в схеме public
-
+```sql
+testdb=> \dt
+        List of relations
+ Schema | Name | Type  |  Owner   
+--------+------+-------+----------
+ public | t1   | table | postgres
+(1 row)
+```
+Права мы выдавали на схему testnm
 
 
