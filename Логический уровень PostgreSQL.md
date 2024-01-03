@@ -6,7 +6,7 @@
   
   *sudo -u postgres psql*
   
-*   создайте новую базу данных testdb
+* создайте новую базу данных testdb
 
 ``` sql
 create database testdb;
