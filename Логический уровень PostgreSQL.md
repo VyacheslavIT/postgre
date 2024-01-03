@@ -83,9 +83,8 @@ CREATE ROLE
 ```
 
 ```sql
-testdb=# GRANT CONNECT ON DATABASE testdb TO readonly;
+GRANT CONNECT ON DATABASE testdb TO readonly;
 GRANT
-testdb=# 
 ```
     
   
