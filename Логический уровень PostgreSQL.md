@@ -264,6 +264,14 @@ ERROR:  permission denied for table t1
 Сначала снова выполняем GRANT SELECT ON ALL TABLES IN SCHEMA testnm TO readonly для существующих таблиц, после выполнения появятся права на выполнение запроса select из таблицы t1, 
 Чтобы в дальнейшим видеть вновь созданные таблицы выполняем ALTER default privileges in SCHEMA testnm grant SELECT on TABLES to readonly;
 
+* сделайте select * from testnm.t1;
+
+  testdb=> select * from testnm.t1;
+ c1 
+----
+  1
+(1 row)
+
 
 
 
