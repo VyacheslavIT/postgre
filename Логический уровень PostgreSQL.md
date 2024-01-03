@@ -34,3 +34,21 @@ postgres=# \c testdb
 You are now connected to database "testdb" as user "postgres".
 testdb=# 
 ``` 
+
+* создайте новую схему testnm
+  
+```sql
+testdb=# create schema testnm;
+CREATE SCHEMA
+testdb=# select * from pg_namespace;
+  oid  |      nspname       | nspowner |                            nspacl                             
+-------+--------------------+----------+---------------------------------------------------------------
+    99 | pg_toast           |       10 | 
+    11 | pg_catalog         |       10 | {postgres=UC/postgres,=U/postgres}
+  2200 | public             |     6171 | {pg_database_owner=UC/pg_database_owner,=U/pg_database_owner}
+ 13243 | information_schema |       10 | {postgres=UC/postgres,=U/postgres}
+ 16389 | testnm             |       10 | 
+(5 rows)
+```
+
+
