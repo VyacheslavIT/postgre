@@ -130,3 +130,4 @@ testdb=# grant readonly to testread;
 GRANT ROLE
 ```
 
+* зайдите под пользователем testread в базу данных testdb
