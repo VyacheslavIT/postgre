@@ -73,5 +73,15 @@ testdb=# select * from t1;
   1
 (1 row)
 ```
+* создайте новую роль readonly
+
+* дайте новой роли право на подключение к базе данных testdb
+  
+```sql
+create role readonly with login;
+CREATE ROLE
+```
+
+    
   
 
