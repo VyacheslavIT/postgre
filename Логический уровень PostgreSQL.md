@@ -7,15 +7,13 @@
   *sudo -u postgres psql*
   
 *   создайте новую базу данных testdb
-*   
-  
+   
   ``` sql
 create database testdb;
 ```
 
 
 ```sql
-
 postgres=# \l
                                                  List of databases
    Name    |  Owner   | Encoding |   Collate   |    Ctype    | ICU Locale | Locale Provider |   Access privileges   
