@@ -102,7 +102,7 @@ GRANT
 * создайте пользователя testread с паролем test123
 
 ```sql
- create user testread password 'test123'; 
+CREATE USER testread PASSWORD 'test123';
 ``` 
   
 
