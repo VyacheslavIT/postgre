@@ -81,7 +81,8 @@ testdb=# select * from t1;
 create role readonly with login;
 CREATE ROLE
 ```
-``sql
+
+```sql
 testdb=# GRANT CONNECT ON DATABASE testdb TO readonly;
 GRANT
 testdb=# 
