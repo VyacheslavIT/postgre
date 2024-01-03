@@ -102,7 +102,15 @@ GRANT
 * создайте пользователя testread с паролем test123
 
 ```sql
-CREATE USER testread PASSWORD 'test123';
+create user testread password 'test123';
+CREATE ROLE
+
 ``` 
   
 * дайте роль readonly пользователю testread
+
+  ```sql
+  testdb=# grant readonly to testread;
+GRANT ROLE
+```
+
