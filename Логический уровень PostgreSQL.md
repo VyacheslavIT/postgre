@@ -7,4 +7,24 @@
   *sudo -u postgres psql*
   
 *   создайте новую базу данных testdb
+*   
   
+  ``` sql
+create database testdb;
+```
+
+
+```sql
+
+postgres=# \l
+                                                 List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    | ICU Locale | Locale Provider |   Access privileges   
+-----------+----------+----------+-------------+-------------+------------+-----------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | =c/postgres          +
+           |          |          |             |             |            |                 | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | =c/postgres          +
+           |          |          |             |             |            |                 | postgres=CTc/postgres
+ testdb    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+(4 rows)
+```
