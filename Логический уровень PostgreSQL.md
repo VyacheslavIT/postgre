@@ -51,4 +51,15 @@ testdb=# select * from pg_namespace;
 (5 rows)
 ```
 
+* создайте новую таблицу t1 с одной колонкой c1 типа integer
+```sql
+CREATE TABLE t1(c1 integer);
+CREATE TABLE
+testdb=# \dt
+        List of relations
+ Schema | Name | Type  |  Owner   
+--------+------+-------+----------
+ public | t1   | table | postgres
+(1 row)
+```
 
