@@ -228,4 +228,24 @@ testdb=#
 
 
 ``` 
+* создайте ее заново но уже с явным указанием имени схемы testnm
+  
+* вставьте строку со значением c1=1
 
+```sql
+testdb=# CREATE TABLE testnm.t1(c1 integer);
+CREATE TABLE
+testdb=# INSERT INTO testnm.t1 values(1);
+INSERT 0 1
+
+testdb=# select * from testnm.t1;
+ c1 
+----
+  1
+(1 row)
+```
+
+
+  
+
+  
