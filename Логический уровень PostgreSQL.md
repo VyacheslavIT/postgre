@@ -92,5 +92,9 @@ GRANT
 GRANT USAGE ON SCHEMA testnm TO readonly;
 GRANT
 ```
+
+* дайте новой роли право на select для всех таблиц схемы testnm
+
+  
   
 
