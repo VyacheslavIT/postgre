@@ -62,4 +62,16 @@ testdb=# \dt
  public | t1   | table | postgres
 (1 row)
 ```
+* вставьте строку со значением c1=1
+  
+```sql
+INSERT INTO t1 values(1);
+INSERT 0 1
+testdb=# select * from t1;
+ c1 
+----
+  1
+(1 row)
+```
+  
 
