@@ -108,9 +108,9 @@ CREATE ROLE
 ``` 
   
 * дайте роль readonly пользователю testread
-
-  ```sql
-  testdb=# grant readonly to testread;
+  
+```sql
+testdb=# grant readonly to testread;
 GRANT ROLE
 ```
 
