@@ -290,6 +290,7 @@ ERROR:  permission denied for schema public
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/505b0bc4-01da-4054-8b05-67bf7e264d7d)
 
 * теперь попробуйте выполнить команду create table t2(c1 integer); insert into t2 values (2);
+  
 * а как так? нам же никто прав на создание таблиц и insert в них под ролью readonly?
 
 
