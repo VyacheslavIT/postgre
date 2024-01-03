@@ -30,9 +30,6 @@ postgres=# \l
 * зайдите в созданную базу данных под пользователем postgres
   
 ```sql
-postgres=# \c tsetdb
-connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  database "tsetdb" does not exist
-Previous connection kept
 postgres=# \c testdb
 You are now connected to database "testdb" as user "postgres".
 testdb=# 
