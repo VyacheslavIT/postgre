@@ -317,7 +317,7 @@ testdb=>
 REVOKE CREATE ON SCHEMA public FROM PUBLIC; 
 Эта инструкция отзывает право создания объектов (CREATE) в схеме public у пользователей. 
 То есть, после выполнения этой инструкции, пользователи не смогут создавать новые таблицы, функции, триггеры и другие объекты в схеме public.
-Также 
+
 
 REVOKE ALL on DATABASE testdb FROM public; 
 
