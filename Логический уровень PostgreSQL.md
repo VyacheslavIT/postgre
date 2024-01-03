@@ -99,6 +99,10 @@ GRANT
 GRANT SELECT ON ALL TABLES IN SCHEMA testnm TO readonly;
 GRANT
 ```
-  
+* создайте пользователя testread с паролем test123
+
+```sql
+ create user testread password 'test123'; 
+``` 
   
 
