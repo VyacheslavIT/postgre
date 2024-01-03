@@ -86,6 +86,6 @@ CREATE ROLE
 GRANT CONNECT ON DATABASE testdb TO readonly;
 GRANT
 ```
-    
+* дайте новой роли право на использование схемы testnm    
   
 
