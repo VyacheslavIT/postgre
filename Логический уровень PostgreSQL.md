@@ -272,7 +272,7 @@ ERROR:  permission denied for table t1
   1
 (1 row)
 ```
-
+* теперь попробуйте выполнить команду create table t2(c1 integer); insert into t2 values (2);
 
 
 
