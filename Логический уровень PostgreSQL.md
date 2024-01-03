@@ -81,11 +81,12 @@ testdb=# select * from t1;
 create role readonly;
 CREATE ROLE
 
-SELECT rolname FROM pg_roles where rolname = 'readonly';
- rolname  
-----------
- readonly
+SELECT * FROM pg_roles where rolname = 'readonly';
+ rolname  | rolsuper | rolinherit | rolcreaterole | rolcreatedb | rolcanlogin | rolreplication | rolconnlimit | rolpassword | rolvaliduntil | rolbypassrls | rolconfig |  oid  
+----------+----------+------------+---------------+-------------+-------------+----------------+--------------+-------------+---------------+--------------+-----------+-------
+ readonly | f        | t          | f             | f           | t           | f              |           -1 | ********    |               | f            |           | 16393
 (1 row)
+
 
 ```
 
