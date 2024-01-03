@@ -133,7 +133,7 @@ GRANT ROLE
 * зайдите под пользователем testread в базу данных testdb
 
  ```sql
-  psql -h localhost -d testdb -U testread;
+psql -h localhost -d testdb -U testread;
 Password for user testread: 
 psql (15.5 (Ubuntu 15.5-1.pgdg23.10+1))
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
