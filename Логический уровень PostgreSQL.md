@@ -220,5 +220,12 @@ testdb=#
 ```sql
 testdb=# drop table t1;
 DROP TABLE
+testdb=# select * from t1;
+ERROR:  relation "t1" does not exist
+LINE 1: select * from t1;
+                      ^
+testdb=# 
+
+
 ``` 
 
