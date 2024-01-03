@@ -112,11 +112,12 @@ GRANT
 create user testread password 'test123';
 CREATE ROLE
 
-SELECT usename FROM pg_user where usename = 'testread';
- usename  
-----------
- testread
+SELECT * FROM pg_user where usename = 'testread';
+ usename  | usesysid | usecreatedb | usesuper | userepl | usebypassrls |  passwd  | valuntil | useconfig 
+----------+----------+-------------+----------+---------+--------------+----------+----------+-----------
+ testread |    16394 | f           | f        | f       | f            | ******** |          | 
 (1 row)
+
 
 
 ``` 
