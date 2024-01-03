@@ -183,6 +183,24 @@ testdb=> \dt
 
 * а почему так получилось с таблицей (если делали сами и без шпаргалки то может у вас все нормально)
   
-  
+ У нас нет схемы пользовательсой, а так как мы явно не указывали схему по умолчанию табличка попала в схуму public
+
+```sql 
+postgres=# SELECT current_schemas(true);
+   current_schemas   
+---------------------
+ {pg_catalog,public}
+(1 row)
+```
+ 
+```sql
+postgres=# SHOW search_path;
+   search_path   
+-----------------
+ "$user", public
+(1 row)
+
+```
+ 
 
 
