@@ -120,7 +120,18 @@ test_outus=# SELECT pg_size_pretty(pg_TABLE_size('test'));
 ```
   
 * Отключить Автовакуум на конкретной таблице
+```sql
+ ALTER TABLE test SET (autovacuum_enabled = off);
+
+```
+  
 * 10 раз обновить все строчки и добавить к каждой строчке любой символ
+
+  ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/f3334df4-6109-4f77-abd3-c43089f20b4d)
+
+
+-------------------
+  
 * Посмотреть размер файла с таблицей
 * Объясните полученный результат
 * Не забудьте включить автовакуум)
