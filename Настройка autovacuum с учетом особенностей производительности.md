@@ -1,6 +1,11 @@
 
 * Создать инстанс ВМ с 2 ядрами и 4 Гб ОЗУ и SSD 10GB
 * Установить на него PostgreSQL 15 с дефолтными настройками
+  
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/7b1aebe5-1948-45aa-82c1-ff49fcf23e47)
+
+
+ ------------------- 
 * Создать БД для тестов: выполнить pgbench -i postgres
 * Запустить pgbench -c8 -P 6 -T 60 -U postgres postgres
 * Применить параметры настройки PostgreSQL из прикрепленного к материалам занятия файла
