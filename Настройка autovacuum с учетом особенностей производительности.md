@@ -128,8 +128,22 @@ test_outus=# SELECT pg_size_pretty(pg_TABLE_size('test'));
 * 10 раз обновить все строчки и добавить к каждой строчке любой символ
 
   ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/f3334df4-6109-4f77-abd3-c43089f20b4d)
-
-
+  
+```sql
+CREATE PROCEDURE update_test3()
+LANGUAGE plpgsql
+AS $$
+ declare step int := 1;
+ begin
+  while step <= 10 loop
+  raise notice 'Step %',step;
+  UPDATE test SET c1 =100000;
+  
+   step := step+1;
+  end loop;
+ end;
+ $$;
+```
 -------------------
   
 * Посмотреть размер файла с таблицей
