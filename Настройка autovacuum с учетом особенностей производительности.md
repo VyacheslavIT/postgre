@@ -115,7 +115,7 @@ NOTICE:  Step 5
 test_outus=# SELECT pg_size_pretty(pg_TABLE_size('test'));
  pg_size_pretty 
 ----------------
- 173 MB
+ 208 MB
 (1 row)
 
 ```
