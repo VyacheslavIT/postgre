@@ -96,7 +96,25 @@ SELECT relname, n_live_tup, n_dead_tup, trunc(100*n_dead_tup/(n_live_tup+1))::fl
 ```
 ----------------------  
 * 5 раз обновить все строчки и добавить к каждой строчке любой символ
+```sql
+test_outus=# call update_test();
+NOTICE:  Step 1
+NOTICE:  Step 2
+NOTICE:  Step 3
+NOTICE:  Step 4
+NOTICE:  Step 5
+
+```
+  
 * Посмотреть размер файла с таблицей
+```sql
+test_outus=# SELECT pg_size_pretty(pg_TABLE_size('test'));
+ pg_size_pretty 
+----------------
+ 173 MB
+(1 row)
+```
+  
 * Отключить Автовакуум на конкретной таблице
 * 10 раз обновить все строчки и добавить к каждой строчке любой символ
 * Посмотреть размер файла с таблицей
