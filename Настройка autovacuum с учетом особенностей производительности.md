@@ -82,7 +82,14 @@ SELECT relname, n_live_tup, n_dead_tup, trunc(100*n_dead_tup/(n_live_tup+1))::fl
 ```
 ----------------------
 * Подождать некоторое время, проверяя, пришел ли автовакуум
+```sql
+SELECT relname, n_live_tup, n_dead_tup, trunc(100*n_dead_tup/(n_live_tup+1))::float "ratio%", last_autovacuum FROM pg_stat_user_TABLEs WHERE relname = 'test';
 
+ relname | n_live_tup | n_dead_tup | ratio% |        last_autovacuum        
+---------+------------+------------+--------+-------------------------------
+ test    |    1000000 |          0 |      0 | 2024-01-06 15:22:06.632755+03
+(1 row)
+```
 ----------------------  
 * 5 раз обновить все строчки и добавить к каждой строчке любой символ
 * Посмотреть размер файла с таблицей
