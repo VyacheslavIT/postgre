@@ -7,6 +7,43 @@
 * Протестировать заново
 * Что изменилось и почему?
 * Создать таблицу с текстовым полем и заполнить случайными или сгенерированными данным в размере 1млн строк
+```sql
+create table test (c1 text);
+
+test_outus=# select count(*) from test;
+ count 
+-------
+     0
+(1 row)
+
+```
+```sql
+
+CREATE FUNCTION insert_test()  
+RETURNS void AS
+$BODY$
+DECLARE
+  rec text;
+BEGIN
+  FOR rec IN 1..1000000 LOOP
+    INSERT INTO test VALUES (rec);
+  END LOOP;
+END;
+$BODY$
+  LANGUAGE plpgsql;
+  
+ select insert_test();
+
+test_outus=# select count(*) from test;
+  count  
+---------
+ 1000000
+(1 row)
+
+
+```
+
+ ---------------------- 
 * Посмотреть размер файла с таблицей
 * 5 раз обновить все строчки и добавить к каждой строчке любой символ
 * Посмотреть количество мертвых строчек в таблице и когда последний раз приходил автовакуум
