@@ -54,6 +54,22 @@ test_outus=# SELECT pg_size_pretty(pg_TABLE_size('test'));
 ```
 -----------------------  
 * 5 раз обновить все строчки и добавить к каждой строчке любой символ
+```sql
+CREATE PROCEDURE update_test()
+LANGUAGE plpgsql
+AS $$
+ declare step int := 1;
+ begin
+  while step <= 5 loop
+  raise notice 'Step %',step;
+  UPDATE test SET c1 =1;
+  
+   step := step+1;
+  end loop;
+ end;
+ $$;
+```
+--------------------------------
 * Посмотреть количество мертвых строчек в таблице и когда последний раз приходил автовакуум
 * Подождать некоторое время, проверяя, пришел ли автовакуум
 * 5 раз обновить все строчки и добавить к каждой строчке любой символ
