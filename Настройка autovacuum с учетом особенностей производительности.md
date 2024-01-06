@@ -42,7 +42,11 @@ test_outus=# select count(*) from test;
 
 
 ```
+или можно так 
 
+```sql
+INSERT INTO test SELECT  FROM generate_series(1,1000000);
+```
  ---------------------- 
 * Посмотреть размер файла с таблицей
 ```sql
