@@ -114,6 +114,80 @@ postgres@slavavm1:/home/slava$
   
 -------------------  
 * Применить параметры настройки PostgreSQL из прикрепленного к материалам занятия файла
+```sql
+postgres=# SHOW max_connections;
+ max_connections 
+-----------------
+ 40
+(1 row)
+
+postgres=# SHOW shared_buffers;
+ shared_buffers 
+----------------
+ 1GB
+(1 row)
+
+postgres=# SHOW effective_cache_size;
+ effective_cache_size 
+----------------------
+ 3GB
+(1 row)
+
+postgres=# SHOW maintenance_work_mem;
+ maintenance_work_mem 
+----------------------
+ 512MB
+(1 row)
+
+postgres=# SHOW checkpoint_completion_target;
+ checkpoint_completion_target 
+------------------------------
+ 0.9
+(1 row)
+
+postgres=# SHOW wal_buffers;
+ wal_buffers 
+-------------
+ 16MB
+(1 row)
+
+postgres=# SHOW default_statistics_target;
+ default_statistics_target 
+---------------------------
+ 500
+(1 row)
+
+postgres=# SHOW random_page_cost;
+ random_page_cost 
+------------------
+ 4
+(1 row)
+
+postgres=# SHOW effective_io_concurrency;
+ effective_io_concurrency 
+--------------------------
+ 2
+(1 row)
+
+postgres=# SHOW work_mem;
+ work_mem 
+----------
+ 6553kB
+(1 row)
+
+postgres=# SHOW min_wal_size;
+ min_wal_size 
+--------------
+ 4GB
+(1 row)
+
+postgres=# SHOW max_wal_size;
+ max_wal_size 
+--------------
+ 16GB
+(1 row)
+```
+--------------------------
 * Протестировать заново
 * Что изменилось и почему?
   
