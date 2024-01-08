@@ -7,12 +7,12 @@
 
  ------------------- 
 * Создать БД для тестов: выполнить pgbench -i postgres
-
+```sql
 test_outus=# create database pgbench;
 
 CREATE DATABASE
+```
 
-test_outus=# \q
 
 postgres@slavavm1:/home/slava$ pgbench -i pgbench;
 
