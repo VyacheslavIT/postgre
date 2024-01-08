@@ -53,7 +53,7 @@ pgbench=# \dt
  ------------------ 
 * Запустить pgbench -c8 -P 6 -T 60 -U postgres postgres
   
-ostgres@slavavm1:/home/slava$ pgbench -c8 -P 6 -T 60 -U postgres postgres
+ostgres@slavavm1:/home/slava$ pgbench -c8 -P 6 -T 60 -U postgres pgbench
 
 pgbench (15.5 (Ubuntu 15.5-1.pgdg23.10+1))
 
