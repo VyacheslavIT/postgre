@@ -107,10 +107,6 @@ tps = 825.433210 (without initial connection time)
 
 postgres@slavavm1:/home/slava$ 
 
-
-
-
-
   
 -------------------  
 * Применить параметры настройки PostgreSQL из прикрепленного к материалам занятия файла
@@ -189,6 +185,60 @@ postgres=# SHOW max_wal_size;
 ```
 --------------------------
 * Протестировать заново
+
+postgres@slavavm1:/home/slava$ pgbench -c8 -P 6 -T 60 -U postgres pgbench
+
+pgbench (15.5 (Ubuntu 15.5-1.pgdg23.10+1))
+
+starting vacuum...end.
+
+progress: 6.0 s, 703.8 tps, lat 11.334 ms stddev 7.483, 0 failed
+
+progress: 12.0 s, 821.9 tps, lat 9.732 ms stddev 5.702, 0 failed
+
+progress: 18.0 s, 882.9 tps, lat 9.057 ms stddev 5.061, 0 failed
+
+progress: 24.0 s, 880.5 tps, lat 9.087 ms stddev 5.218, 0 failed
+
+progress: 30.0 s, 891.9 tps, lat 8.969 ms stddev 4.889, 0 failed
+
+progress: 36.0 s, 889.5 tps, lat 8.995 ms stddev 5.178, 0 failed
+
+progress: 42.0 s, 875.8 tps, lat 9.131 ms stddev 5.235, 0 failed
+
+progress: 48.0 s, 844.5 tps, lat 9.477 ms stddev 5.484, 0 failed
+
+progress: 54.0 s, 811.3 tps, lat 9.854 ms stddev 5.450, 0 failed
+
+progress: 60.0 s, 794.3 tps, lat 10.076 ms stddev 5.734, 0 failed
+
+transaction type: <builtin: TPC-B (sort of)>
+
+scaling factor: 1
+
+query mode: simple
+
+number of clients: 8
+
+number of threads: 1
+
+maximum number of tries: 1
+
+duration: 60 s
+
+number of transactions actually processed: 50387
+
+number of failed transactions: 0 (0.000%)
+
+latency average = 9.525 ms
+
+latency stddev = 5.577 ms
+
+initial connection time = 11.557 ms
+
+tps = 839.758560 (without initial connection time)
+
+-------------------------
 * Что изменилось и почему?
   
 -------------------------
