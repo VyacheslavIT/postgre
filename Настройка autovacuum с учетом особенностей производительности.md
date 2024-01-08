@@ -7,7 +7,69 @@
 
  ------------------- 
 * Создать БД для тестов: выполнить pgbench -i postgres
+
+test_outus=# create database pgbench;
+CREATE DATABASE
+test_outus=# \q
+postgres@slavavm1:/home/slava$ pgbench -i pgbench;
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data (client-side)...
+100000 of 100000 tuples (100%) done (elapsed 0.04 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done in 0.21 s (drop tables 0.00 s, create tables 0.01 s, client-side generate 0.12 s, vacuum 0.03 s, primary keys 0.05 s).
+postgres@slavavm1:/home/slava$ 
+
+pgbench=# \dt
+              List of relations
+ Schema |       Name       | Type  |  Owner   
+--------+------------------+-------+----------
+ public | pgbench_accounts | table | postgres
+ public | pgbench_branches | table | postgres
+ public | pgbench_history  | table | postgres
+ public | pgbench_tellers  | table | postgres
+(4 rows)
+
+
+ ------------------ 
 * Запустить pgbench -c8 -P 6 -T 60 -U postgres postgres
+  
+ostgres@slavavm1:/home/slava$ pgbench -c8 -P 6 -T 60 -U postgres postgres
+pgbench (15.5 (Ubuntu 15.5-1.pgdg23.10+1))
+starting vacuum...end.
+progress: 6.0 s, 594.0 tps, lat 13.403 ms stddev 9.552, 0 failed
+progress: 12.0 s, 801.9 tps, lat 9.982 ms stddev 5.898, 0 failed
+progress: 18.0 s, 861.9 tps, lat 9.283 ms stddev 5.367, 0 failed
+progress: 24.0 s, 903.2 tps, lat 8.854 ms stddev 5.060, 0 failed
+progress: 30.0 s, 887.7 tps, lat 9.013 ms stddev 5.168, 0 failed
+progress: 36.0 s, 907.5 tps, lat 8.817 ms stddev 4.916, 0 failed
+progress: 42.0 s, 898.1 tps, lat 8.904 ms stddev 5.048, 0 failed
+progress: 48.0 s, 907.5 tps, lat 8.815 ms stddev 5.037, 0 failed
+progress: 54.0 s, 876.0 tps, lat 9.129 ms stddev 5.252, 0 failed
+progress: 60.0 s, 702.0 tps, lat 11.397 ms stddev 7.363, 0 failed
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 8
+number of threads: 1
+maximum number of tries: 1
+duration: 60 s
+number of transactions actually processed: 50047
+number of failed transactions: 0 (0.000%)
+latency average = 9.589 ms
+latency stddev = 5.974 ms
+initial connection time = 20.202 ms
+tps = 834.123173 (without initial connection time)
+postgres@slavavm1:/home/slava$ 
+
+
+  
+-------------------  
 * Применить параметры настройки PostgreSQL из прикрепленного к материалам занятия файла
 * Протестировать заново
 * Что изменилось и почему?
