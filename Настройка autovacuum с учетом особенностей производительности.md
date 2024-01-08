@@ -53,31 +53,31 @@ pgbench=# \dt
  ------------------ 
 * Запустить pgbench -c8 -P 6 -T 60 -U postgres postgres
   
-ostgres@slavavm1:/home/slava$ pgbench -c8 -P 6 -T 60 -U postgres pgbench
+postgres@slavavm1:/home/slava$ pgbench -c8 -P 6 -T 60 -U postgres pgbench
 
 pgbench (15.5 (Ubuntu 15.5-1.pgdg23.10+1))
 
 starting vacuum...end.
 
-progress: 6.0 s, 594.0 tps, lat 13.403 ms stddev 9.552, 0 failed
+progress: 6.0 s, 890.8 tps, lat 8.960 ms stddev 5.295, 0 failed
 
-progress: 12.0 s, 801.9 tps, lat 9.982 ms stddev 5.898, 0 failed
+progress: 12.0 s, 835.8 tps, lat 9.566 ms stddev 5.556, 0 failed
 
-progress: 18.0 s, 861.9 tps, lat 9.283 ms stddev 5.367, 0 failed
+progress: 18.0 s, 810.6 tps, lat 9.869 ms stddev 5.908, 0 failed
 
-progress: 24.0 s, 903.2 tps, lat 8.854 ms stddev 5.060, 0 failed
+progress: 24.0 s, 784.5 tps, lat 10.085 ms stddev 5.692, 0 failed
 
-progress: 30.0 s, 887.7 tps, lat 9.013 ms stddev 5.168, 0 failed
+progress: 30.0 s, 774.7 tps, lat 10.434 ms stddev 28.979, 0 failed
 
-progress: 36.0 s, 907.5 tps, lat 8.817 ms stddev 4.916, 0 failed
+progress: 36.0 s, 866.0 tps, lat 9.245 ms stddev 5.111, 0 failed
 
-progress: 42.0 s, 898.1 tps, lat 8.904 ms stddev 5.048, 0 failed
+progress: 42.0 s, 845.8 tps, lat 9.456 ms stddev 5.372, 0 failed
 
-progress: 48.0 s, 907.5 tps, lat 8.815 ms stddev 5.037, 0 failed
+progress: 48.0 s, 838.8 tps, lat 9.531 ms stddev 5.390, 0 failed
 
-progress: 54.0 s, 876.0 tps, lat 9.129 ms stddev 5.252, 0 failed
+progress: 54.0 s, 813.8 tps, lat 9.836 ms stddev 5.735, 0 failed
 
-progress: 60.0 s, 702.0 tps, lat 11.397 ms stddev 7.363, 0 failed
+progress: 60.0 s, 792.1 tps, lat 10.098 ms stddev 5.821, 0 failed
 
 transaction type: <builtin: TPC-B (sort of)>
 
@@ -93,19 +93,22 @@ maximum number of tries: 1
 
 duration: 60 s
 
-number of transactions actually processed: 50047
+number of transactions actually processed: 49526
 
 number of failed transactions: 0 (0.000%)
 
-latency average = 9.589 ms
+latency average = 9.691 ms
 
-latency stddev = 5.974 ms
+latency stddev = 10.334 ms
 
-initial connection time = 20.202 ms
+initial connection time = 9.302 ms
 
-tps = 834.123173 (without initial connection time)
+tps = 825.433210 (without initial connection time)
 
 postgres@slavavm1:/home/slava$ 
+
+
+
 
 
   
