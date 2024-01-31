@@ -38,14 +38,6 @@ max_wal_size = 4GB
 
 tps = 707.368794
 
-Тест 2:  увеличим shared_buffer до 3GB   pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
-
-tps = 715.347861
-
-Тест 3: увеличим wal_buffer до 128MB   pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
-
-tps = 707.039617
-
 ```sql
  synchronous_commit
 --------------------
@@ -56,10 +48,7 @@ tps = 707.039617
 
 tps = 2292.397107 
 
-Тест 2 pgbench увеличим shared_buffer до 3GB -c 50 -j 2 -P 10 -T 60 -U postgres postgres
 
-Тест 3 pgbench увеличим wal_buffer до 128MB -c 50 -j 2 -P 10 -T 60 -U postgres postgres
- 
 -----------------------------------------------------
 * написать какого значения tps удалось достичь, показать какие параметры в какие значения устанавливали и почему
 
