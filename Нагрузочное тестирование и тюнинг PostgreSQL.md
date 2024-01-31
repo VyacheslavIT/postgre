@@ -13,6 +13,7 @@
 
 Выставил настроки из pg_tune
 
+```sql
 max_connections = 100
 shared_buffers = 1GB
 effective_cache_size = 3GB
@@ -26,8 +27,9 @@ work_mem = 2621kB
 huge_pages = off
 min_wal_size = 1GB
 max_wal_size = 4GB
+```
 
-и 
+и асинхронный режим
 
 ----------------------------------------------------
 * нагрузить кластер через утилиту через утилиту pgbench (https://postgrespro.ru/docs/postgrespro/14/pgbench)
