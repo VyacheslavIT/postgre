@@ -44,9 +44,13 @@ tps = 707.368794
  off
 (1 row)
 ```
-Тест 1 pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
+Тест 1 режим асинхронный pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
 
 tps = 2292.397107 
+
+Тест 2 настройки по умолчанию режим асинхронный pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
+
+tps = 2257.098643
 
 
 -----------------------------------------------------
