@@ -11,6 +11,23 @@
 -----------------------------------------------------
 * настроить кластер PostgreSQL 15 на максимальную производительность не обращая внимание на возможные проблемы с надежностью в случае аварийной перезагрузки виртуальной машины
 
+Выставил настроки из pg_tune
+
+max_connections = 100
+shared_buffers = 1GB
+effective_cache_size = 3GB
+maintenance_work_mem = 256MB
+checkpoint_completion_target = 0.9
+wal_buffers = 16MB
+default_statistics_target = 100
+random_page_cost = 4
+effective_io_concurrency = 2
+work_mem = 2621kB
+huge_pages = off
+min_wal_size = 1GB
+max_wal_size = 4GB
+
+и 
 
 ----------------------------------------------------
 * нагрузить кластер через утилиту через утилиту pgbench (https://postgrespro.ru/docs/postgrespro/14/pgbench)
