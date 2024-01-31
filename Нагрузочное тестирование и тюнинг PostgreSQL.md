@@ -44,6 +44,12 @@ tps = 715.347861
 
 Тест 3: в увеличим wal_buffer до 128MB   pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
 
+```sql
+ synchronous_commit
+--------------------
+ on
+(1 row)
+```
 
  
 -----------------------------------------------------
