@@ -47,7 +47,7 @@ tps = 715.347861
 ```sql
  synchronous_commit
 --------------------
- on
+ off
 (1 row)
 ```
 
