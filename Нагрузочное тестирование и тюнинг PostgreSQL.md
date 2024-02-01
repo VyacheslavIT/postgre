@@ -98,3 +98,5 @@ sudo apt -y install sysbench
 
 2:  sysbench --db-driver=pgsql  --tables=24   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua run
 
+3:  sysbench --db-driver=pgsql --oltp-table-size=1000000 --oltp-tables-count=24 --threads=2  --report-interval=2 --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua run
+
