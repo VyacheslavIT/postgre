@@ -88,11 +88,11 @@ https://github.com/akopytov/sysbench)
 
 
 
-1:curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash
+1:  curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash
 sudo apt -y install sysbench
 
 
 
 
-2:sysbench --db-driver=pgsql  --tables=24   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua run
+2:  sysbench --db-driver=pgsql  --tables=24   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua run
 
