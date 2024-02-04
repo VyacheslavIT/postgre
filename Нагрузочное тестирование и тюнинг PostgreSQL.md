@@ -36,9 +36,12 @@ max_wal_size = 4GB
 ----------------------------------------------------
 * нагрузить кластер через утилиту через утилиту pgbench (https://postgrespro.ru/docs/postgrespro/14/pgbench)
 
-Тест 1: в синхронном режиме pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
+  подготовка pgbench -i -p 5433 -s 10
+  
 
-tps = 707.368794
+Тест 1: в синхронном режиме с настройка ро умолчанию pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
+
+tps = 3500.993491
 
 ```sql
  synchronous_commit
