@@ -43,6 +43,10 @@ max_wal_size = 4GB
 
 tps = 3500.993491
 
+Тест 2: в синхронном режиме настройки с  pgtune
+
+tps = 3304.568552
+
 ```sql
 postgres=# show synchronous_commit;
  synchronous_commit 
@@ -51,11 +55,11 @@ postgres=# show synchronous_commit;
 (1 row)
 
 ```
-Тест 2 режим асинхронный настройки  по умолчанию  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
+Тест 3 режим асинхронный настройки  по умолчанию  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
 tps = 4302.523401
 
-Тест 3 режим асинхронный настройки с  pgtune  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
+Тест 4 режим асинхронный настройки с  pgtune  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
 tps = 4325.773212 
 
@@ -148,7 +152,52 @@ Threads fairness:
 ```
 
 ```sql
-Тест 2 режим асинхронный настройки с pgtune
+Тест 2: в синхронном режиме настройки с  pgtune
+
+Initializing worker threads...
+
+Threads started!
+
+[ 2s ] thds: 1 tps: 619.13 qps: 12383.06 (r/w/o: 8667.79/2476.51/1238.76) lat (ms,95%): 2.57 err/s: 0.00 reconn/s: 0.00
+[ 4s ] thds: 1 tps: 770.52 qps: 15415.86 (r/w/o: 10792.75/3082.07/1541.04) lat (ms,95%): 2.03 err/s: 0.00 reconn/s: 0.00
+[ 6s ] thds: 1 tps: 781.45 qps: 15628.90 (r/w/o: 10940.23/3125.78/1562.89) lat (ms,95%): 1.96 err/s: 0.00 reconn/s: 0.00
+[ 8s ] thds: 1 tps: 770.61 qps: 15415.76 (r/w/o: 10790.08/3084.45/1541.23) lat (ms,95%): 1.79 err/s: 0.00 reconn/s: 0.00
+[ 10s ] thds: 1 tps: 778.46 qps: 15569.12 (r/w/o: 10898.38/3113.82/1556.91) lat (ms,95%): 1.73 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            104188
+        write:                           29768
+        other:                           14884
+        total:                           148840
+    transactions:                        7442   (744.03 per sec.)
+    queries:                             148840 (14880.58 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          10.0014s
+    total number of events:              7442
+
+Latency (ms):
+         min:                                    0.97
+         avg:                                    1.34
+         max:                                   10.79
+         95th percentile:                        2.03
+         sum:                                 9988.86
+
+Threads fairness:
+    events (avg/stddev):           7442.0000/0.00
+    execution time (avg/stddev):   9.9889/0.00
+
+
+
+```
+
+
+
+
+```sql
+Тест 3 режим асинхронный настройки с pgtune
 
 Initializing worker threads...
 
