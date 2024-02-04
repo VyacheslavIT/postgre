@@ -240,7 +240,7 @@ Threads fairness:
 
 ```
 ```sql
-Тест 3 режим асинхронный настройки  по умолчанию
+Тест 4 режим асинхронный настройки  по умолчанию
 
 Initializing worker threads...
 
@@ -276,6 +276,51 @@ Latency (ms):
 Threads fairness:
     events (avg/stddev):           9157.0000/401.00
     execution time (avg/stddev):   9.9898/0.00
+
+
+```
+
+```sql
+Тест 5: в синхронном режиме настройки с  pgtune
+
+wal_buffers = 64MB
+effective_io_concurrency = 1
+
+Initializing worker threads...
+
+Threads started!
+
+[ 2s ] thds: 2 tps: 840.85 qps: 16825.07 (r/w/o: 11778.95/3363.42/1682.71) lat (ms,95%): 4.57 err/s: 0.00 reconn/s: 0.00
+[ 4s ] thds: 2 tps: 972.74 qps: 19452.39 (r/w/o: 13615.92/3890.98/1945.49) lat (ms,95%): 2.76 err/s: 0.00 reconn/s: 0.00
+[ 6s ] thds: 2 tps: 1109.49 qps: 22190.88 (r/w/o: 15533.91/4437.98/2218.99) lat (ms,95%): 3.30 err/s: 0.00 reconn/s: 0.00
+[ 8s ] thds: 2 tps: 1100.95 qps: 22025.95 (r/w/o: 15420.27/4403.79/2201.90) lat (ms,95%): 2.66 err/s: 0.00 reconn/s: 0.00
+[ 10s ] thds: 2 tps: 1041.05 qps: 20818.01 (r/w/o: 14571.71/4164.20/2082.10) lat (ms,95%): 3.02 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            141862
+        write:                           40532
+        other:                           20266
+        total:                           202660
+    transactions:                        10133  (1012.79 per sec.)
+    queries:                             202660 (20255.77 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          10.0041s
+    total number of events:              10133
+
+Latency (ms):
+         min:                                    0.90
+         avg:                                    1.97
+         max:                                   19.37
+         95th percentile:                        3.30
+         sum:                                19986.68
+
+Threads fairness:
+    events (avg/stddev):           5066.5000/61.50
+    execution time (avg/stddev):   9.9933/0.00
+
 
 
 ```
