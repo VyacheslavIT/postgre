@@ -44,10 +44,12 @@ max_wal_size = 4GB
 tps = 3500.993491
 
 ```sql
- synchronous_commit
+postgres=# show synchronous_commit;
+ synchronous_commit 
 --------------------
  off
 (1 row)
+
 ```
 Тест 1 режим асинхронный настройки с pgtune pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
 
