@@ -103,7 +103,7 @@ sudo apt -y install sysbench
 GRANT ALL PRIVILEGES ON DATABASE sbtest TO sbtest;
 
 
-2: подготовим 10 таблиц по 100000 строк : sysbench --db-driver=pgsql  --tables=10   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua prepare
+2: подготовим 10 таблиц по 10000 строк : sysbench --db-driver=pgsql  --tables=10   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua prepare
 
 
 3: Запустим тест sysbench --db-driver=pgsql  --tables=10   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua run
