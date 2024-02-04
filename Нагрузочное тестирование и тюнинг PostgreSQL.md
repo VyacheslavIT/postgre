@@ -113,6 +113,7 @@ GRANT ALL PRIVILEGES ON DATABASE sbtest TO sbtest;
 
 
 ```sql
+Тест 1: в синхронном режиме с настройка ро умолчанию
 
 Initializing worker threads...
 
