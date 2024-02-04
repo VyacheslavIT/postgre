@@ -158,36 +158,36 @@ Initializing worker threads...
 
 Threads started!
 
-[ 2s ] thds: 1 tps: 619.13 qps: 12383.06 (r/w/o: 8667.79/2476.51/1238.76) lat (ms,95%): 2.57 err/s: 0.00 reconn/s: 0.00
-[ 4s ] thds: 1 tps: 770.52 qps: 15415.86 (r/w/o: 10792.75/3082.07/1541.04) lat (ms,95%): 2.03 err/s: 0.00 reconn/s: 0.00
-[ 6s ] thds: 1 tps: 781.45 qps: 15628.90 (r/w/o: 10940.23/3125.78/1562.89) lat (ms,95%): 1.96 err/s: 0.00 reconn/s: 0.00
-[ 8s ] thds: 1 tps: 770.61 qps: 15415.76 (r/w/o: 10790.08/3084.45/1541.23) lat (ms,95%): 1.79 err/s: 0.00 reconn/s: 0.00
-[ 10s ] thds: 1 tps: 778.46 qps: 15569.12 (r/w/o: 10898.38/3113.82/1556.91) lat (ms,95%): 1.73 err/s: 0.00 reconn/s: 0.00
+[ 2s ] thds: 1 tps: 736.06 qps: 14729.20 (r/w/o: 10311.84/2944.74/1472.62) lat (ms,95%): 2.07 err/s: 0.00 reconn/s: 0.00
+[ 4s ] thds: 1 tps: 829.56 qps: 16590.16 (r/w/o: 11613.32/3317.73/1659.12) lat (ms,95%): 2.00 err/s: 0.00 reconn/s: 0.00
+[ 6s ] thds: 1 tps: 777.47 qps: 15551.83 (r/w/o: 10885.03/3111.87/1554.93) lat (ms,95%): 2.07 err/s: 0.00 reconn/s: 0.00
+[ 8s ] thds: 1 tps: 692.88 qps: 13857.10 (r/w/o: 9700.32/2771.02/1385.76) lat (ms,95%): 2.03 err/s: 0.00 reconn/s: 0.00
+[ 10s ] thds: 1 tps: 791.70 qps: 15827.93 (r/w/o: 11079.25/3165.29/1583.39) lat (ms,95%): 2.03 err/s: 0.00 reconn/s: 0.00
 SQL statistics:
     queries performed:
-        read:                            104188
-        write:                           29768
-        other:                           14884
-        total:                           148840
-    transactions:                        7442   (744.03 per sec.)
-    queries:                             148840 (14880.58 per sec.)
+        read:                            107198
+        write:                           30628
+        other:                           15314
+        total:                           153140
+    transactions:                        7657   (765.47 per sec.)
+    queries:                             153140 (15309.42 per sec.)
     ignored errors:                      0      (0.00 per sec.)
     reconnects:                          0      (0.00 per sec.)
 
 General statistics:
-    total time:                          10.0014s
-    total number of events:              7442
+    total time:                          10.0021s
+    total number of events:              7657
 
 Latency (ms):
-         min:                                    0.97
-         avg:                                    1.34
-         max:                                   10.79
-         95th percentile:                        2.03
-         sum:                                 9988.86
+         min:                                    0.90
+         avg:                                    1.30
+         max:                                   50.14
+         95th percentile:                        2.07
+         sum:                                 9989.87
 
 Threads fairness:
-    events (avg/stddev):           7442.0000/0.00
-    execution time (avg/stddev):   9.9889/0.00
+    events (avg/stddev):           7657.0000/0.00
+    execution time (avg/stddev):   9.9899/0.00
 
 
 
