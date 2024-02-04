@@ -238,6 +238,44 @@ Threads fairness:
     execution time (avg/stddev):   9.9919/0.00
 
 
+Initializing worker threads...
+
+Threads started!
+
+[ 2s ] thds: 2 tps: 590.87 qps: 11825.80 (r/w/o: 8279.11/2364.46/1182.23) lat (ms,95%): 9.39 err/s: 0.00 reconn/s: 0.00
+[ 4s ] thds: 2 tps: 1376.75 qps: 27535.07 (r/w/o: 19274.55/5506.51/2754.01) lat (ms,95%): 2.57 err/s: 0.00 reconn/s: 0.00
+[ 6s ] thds: 2 tps: 2205.48 qps: 44117.10 (r/w/o: 30882.72/8823.42/4410.96) lat (ms,95%): 1.39 err/s: 0.00 reconn/s: 0.00
+[ 8s ] thds: 2 tps: 2210.04 qps: 44200.82 (r/w/o: 30941.07/8839.66/4420.08) lat (ms,95%): 1.32 err/s: 0.00 reconn/s: 0.00
+[ 10s ] thds: 2 tps: 2209.44 qps: 44185.84 (r/w/o: 30930.69/8835.77/4419.38) lat (ms,95%): 1.32 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            240618
+        write:                           68747
+        other:                           34375
+        total:                           343740
+    transactions:                        17187  (1717.94 per sec.)
+    queries:                             343740 (34358.88 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          10.0035s
+    total number of events:              17187
+
+Latency (ms):
+         min:                                    0.66
+         avg:                                    1.16
+         max:                                   23.19
+         95th percentile:                        2.52
+         sum:                                19977.33
+
+Threads fairness:
+    events (avg/stddev):           8593.5000/340.50
+    execution time (avg/stddev):   9.9887/0.00
+
+
+
+
 ```
 ```sql
 Тест 4 режим асинхронный настройки  по умолчанию
