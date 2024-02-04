@@ -39,7 +39,7 @@ max_wal_size = 4GB
   подготовка pgbench -i -p 5433 -s 10
   
 
-Тест 1: в синхронном режиме с настройка ро умолчанию pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
+Тест 1: в синхронном режиме с настройка ро умолчанию pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
 tps = 3500.993491
 
@@ -51,36 +51,13 @@ postgres=# show synchronous_commit;
 (1 row)
 
 ```
-Тест 1 режим асинхронный настройки с pgtune pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
+Тест 1 режим асинхронный настройки с по умолчанию  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
-tps = 2285.493382
+tps = 4302.523401
 
-tps = 2287.461454
+Тест 2 режим асинхронный настройки с настройками pgtune  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
-tps = 2262.970556
-
-tps = 2285.540911
-
-Тест 2 настройки по умолчанию режим асинхронный pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
-
-tps = 2257.098643
-
-Тест 2 увеличил значение shared_buffers до 1GB режим асинхронный pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
-
-tps = 2284.790622
-
-tps = 2260.621170
-
-tps = 2277.590751
-
-Тест 3 увеличил значение wal_buffers до 64MB режим асинхронный pgbench -c 50 -j 2 -P 10 -T 60 -U postgres postgres
-
-tps = 2287.322406
-
-tps = 2290.068770
-
-tps = 2294.507911
-
+tps = 4325.773212 
 
 
 -----------------------------------------------------
@@ -150,6 +127,47 @@ Threads fairness:
     events (avg/stddev):           8272.0000/0.00
     execution time (avg/stddev):   9.9890/0.00
 
+
+
+```
+
+```sql
+Тест 2 режим асинхронный настройки с настройками pgtune
+
+Initializing worker threads...
+
+Threads started!
+
+[ 2s ] thds: 1 tps: 1127.86 qps: 22564.74 (r/w/o: 15797.07/4511.45/2256.22) lat (ms,95%): 1.30 err/s: 0.00 reconn/s: 0.00
+[ 4s ] thds: 1 tps: 1200.07 qps: 24000.37 (r/w/o: 16799.96/4800.27/2400.14) lat (ms,95%): 1.27 err/s: 0.00 reconn/s: 0.00
+[ 6s ] thds: 1 tps: 1255.50 qps: 25103.47 (r/w/o: 17570.98/5021.99/2510.50) lat (ms,95%): 1.21 err/s: 0.00 reconn/s: 0.00
+[ 8s ] thds: 1 tps: 1269.27 qps: 25385.49 (r/w/o: 17769.84/5077.10/2538.55) lat (ms,95%): 1.06 err/s: 0.00 reconn/s: 0.00
+[ 10s ] thds: 1 tps: 1237.22 qps: 24753.88 (r/w/o: 17328.07/4950.88/2474.94) lat (ms,95%): 1.32 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            170548
+        write:                           48728
+        other:                           24364
+        total:                           243640
+    transactions:                        12182  (1217.82 per sec.)
+    queries:                             243640 (24356.42 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          10.0022s
+    total number of events:              12182
+
+Latency (ms):
+         min:                                    0.63
+         avg:                                    0.82
+         max:                                   22.55
+         95th percentile:                        1.23
+         sum:                                 9986.69
+
+Threads fairness:
+    events (avg/stddev):           12182.0000/0.00
+    execution time (avg/stddev):   9.9867/0.00
 
 
 ```
