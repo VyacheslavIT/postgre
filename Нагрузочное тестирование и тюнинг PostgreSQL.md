@@ -103,47 +103,48 @@ sudo apt -y install sysbench
 GRANT ALL PRIVILEGES ON DATABASE sbtest TO sbtest;
 
 
-2: подготовим 10 таблиц по 10000 строк : sysbench --db-driver=pgsql  --tables=10   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua prepare
+2: подготовим 100 таблиц по 10000 строк : sysbench --db-driver=pgsql  --tables=10   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua prepare
 
 
 3: Запустим тест sysbench --db-driver=pgsql  --tables=10   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua run
 
 
 ```sql
+
 Initializing worker threads...
 
 Threads started!
 
-[ 2s ] thds: 1 tps: 950.25 qps: 19012.04 (r/w/o: 13310.03/3801.01/1901.00) lat (ms,95%): 1.55 err/s: 0.00 reconn/s: 0.00
-[ 4s ] thds: 1 tps: 945.23 qps: 18899.16 (r/w/o: 13227.76/3780.93/1890.47) lat (ms,95%): 1.50 err/s: 0.00 reconn/s: 0.00
-[ 6s ] thds: 1 tps: 831.48 qps: 16635.19 (r/w/o: 11646.28/3325.94/1662.97) lat (ms,95%): 1.89 err/s: 0.00 reconn/s: 0.00
-[ 8s ] thds: 1 tps: 915.01 qps: 18298.66 (r/w/o: 12808.61/3660.03/1830.02) lat (ms,95%): 1.61 err/s: 0.00 reconn/s: 0.00
-[ 10s ] thds: 1 tps: 854.50 qps: 17090.05 (r/w/o: 11963.03/3418.01/1709.00) lat (ms,95%): 1.96 err/s: 0.00 reconn/s: 0.00
+[ 2s ] thds: 1 tps: 701.11 qps: 14031.61 (r/w/o: 9822.48/2806.42/1402.71) lat (ms,95%): 2.48 err/s: 0.00 reconn/s: 0.00
+[ 4s ] thds: 1 tps: 863.52 qps: 17270.45 (r/w/o: 12089.32/3454.09/1727.05) lat (ms,95%): 1.73 err/s: 0.00 reconn/s: 0.00
+[ 6s ] thds: 1 tps: 830.18 qps: 16594.68 (r/w/o: 11615.58/3318.74/1660.37) lat (ms,95%): 1.89 err/s: 0.00 reconn/s: 0.00
+[ 8s ] thds: 1 tps: 866.58 qps: 17340.51 (r/w/o: 12139.06/3468.30/1733.15) lat (ms,95%): 1.86 err/s: 0.00 reconn/s: 0.00
+[ 10s ] thds: 1 tps: 873.81 qps: 17476.12 (r/w/o: 12233.28/3495.22/1747.61) lat (ms,95%): 1.89 err/s: 0.00 reconn/s: 0.00
 SQL statistics:
     queries performed:
-        read:                            125930
-        write:                           35980
-        other:                           17990
-        total:                           179900
-    transactions:                        8995   (899.30 per sec.)
-    queries:                             179900 (17986.01 per sec.)
+        read:                            115808
+        write:                           33088
+        other:                           16544
+        total:                           165440
+    transactions:                        8272   (826.91 per sec.)
+    queries:                             165440 (16538.28 per sec.)
     ignored errors:                      0      (0.00 per sec.)
     reconnects:                          0      (0.00 per sec.)
 
 General statistics:
-    total time:                          10.0013s
-    total number of events:              8995
+    total time:                          10.0023s
+    total number of events:              8272
 
 Latency (ms):
-         min:                                    0.81
-         avg:                                    1.11
-         max:                                   38.36
-         95th percentile:                        1.76
-         sum:                                 9988.38
+         min:                                    0.86
+         avg:                                    1.21
+         max:                                   15.96
+         95th percentile:                        1.96
+         sum:                                 9988.98
 
 Threads fairness:
-    events (avg/stddev):           8995.0000/0.00
-    execution time (avg/stddev):   9.9884/0.00
+    events (avg/stddev):           8272.0000/0.00
+    execution time (avg/stddev):   9.9890/0.00
 
 
 
