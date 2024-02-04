@@ -39,7 +39,7 @@ max_wal_size = 4GB
   подготовка pgbench -i -p 5433 -s 10
   
 
-Тест 1: в синхронном режиме с настройка ро умолчанию pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
+Тест 1: в синхронном режиме с настройка по умолчанию pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
 tps = 3500.993491
 
@@ -51,17 +51,33 @@ postgres=# show synchronous_commit;
 (1 row)
 
 ```
-Тест 1 режим асинхронный настройки с по умолчанию  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
+Тест 2 режим асинхронный настройки  по умолчанию  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
 tps = 4302.523401
 
-Тест 2 режим асинхронный настройки с настройками pgtune  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
+Тест 3 режим асинхронный настройки с  pgtune  pgbench -c 50 -j 2 -P 10 -p 5433 -T 60 -U postgres postgres
 
 tps = 4325.773212 
 
 
 -----------------------------------------------------
 * написать какого значения tps удалось достичь, показать какие параметры в какие значения устанавливали и почему
+  
+tps = 4325.773212 
+
+max_connections = 100
+shared_buffers = 1GB
+effective_cache_size = 3GB
+maintenance_work_mem = 256MB
+checkpoint_completion_target = 0.9
+wal_buffers = 16MB
+default_statistics_target = 100
+random_page_cost = 1.1
+effective_io_concurrency = 200
+work_mem = 2621kB
+huge_pages = off
+min_wal_size = 1GB
+max_wal_size = 4GB
 
 
 ----------------------------------------------------
@@ -90,7 +106,7 @@ GRANT ALL PRIVILEGES ON DATABASE sbtest TO sbtest;
 
 
 ```sql
-Тест 1: в синхронном режиме с настройка ро умолчанию
+Тест 1: в синхронном режиме с настройка по умолчанию
 
 Initializing worker threads...
 
@@ -132,7 +148,7 @@ Threads fairness:
 ```
 
 ```sql
-Тест 2 режим асинхронный настройки с настройками pgtune
+Тест 2 режим асинхронный настройки с pgtune
 
 Initializing worker threads...
 
@@ -168,6 +184,45 @@ Latency (ms):
 Threads fairness:
     events (avg/stddev):           12182.0000/0.00
     execution time (avg/stddev):   9.9867/0.00
+
+
+```
+```sql
+Тест 3 режим асинхронный настройки  по умолчанию
+Initializing worker threads...
+
+Threads started!
+
+[ 2s ] thds: 1 tps: 1164.14 qps: 23292.38 (r/w/o: 16305.01/4658.58/2328.79) lat (ms,95%): 1.08 err/s: 0.00 reconn/s: 0.00
+[ 4s ] thds: 1 tps: 1252.24 qps: 25035.26 (r/w/o: 17524.33/5006.95/2503.98) lat (ms,95%): 0.90 err/s: 0.00 reconn/s: 0.00
+[ 6s ] thds: 1 tps: 1288.59 qps: 25780.23 (r/w/o: 18047.21/5155.35/2577.67) lat (ms,95%): 0.87 err/s: 0.00 reconn/s: 0.00
+[ 8s ] thds: 1 tps: 1191.47 qps: 23820.93 (r/w/o: 16673.60/4764.89/2382.44) lat (ms,95%): 1.23 err/s: 0.00 reconn/s: 0.00
+[ 10s ] thds: 1 tps: 1278.97 qps: 25582.30 (r/w/o: 17908.01/5115.86/2558.43) lat (ms,95%): 0.89 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            172942
+        write:                           49412
+        other:                           24706
+        total:                           247060
+    transactions:                        12353  (1234.95 per sec.)
+    queries:                             247060 (24699.05 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          10.0020s
+    total number of events:              12353
+
+Latency (ms):
+         min:                                    0.65
+         avg:                                    0.81
+         max:                                    4.54
+         95th percentile:                        1.01
+         sum:                                 9987.39
+
+Threads fairness:
+    events (avg/stddev):           12353.0000/0.00
+    execution time (avg/stddev):   9.9874/0.00
 
 
 ```
