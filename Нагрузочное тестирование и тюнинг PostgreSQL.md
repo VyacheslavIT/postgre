@@ -1,19 +1,20 @@
 * развернуть виртуальную машину любым удобным способом
 
-![image](https://github.com/VyacheslavIT/postgre/assets/136000255/6aec0409-feb3-4dc8-b0ab-e3e59dd72f45)
+
 
   
 ------------------------------------------------------
 * поставить на неё PostgreSQL 15 любым способом
 
-![image](https://github.com/VyacheslavIT/postgre/assets/136000255/7e370ef8-3c3b-4540-a484-9fd743b50738)
-  
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/9f038f6b-264b-419a-9ab2-257ec9b0d119)
+
 -----------------------------------------------------
 * настроить кластер PostgreSQL 15 на максимальную производительность не обращая внимание на возможные проблемы с надежностью в случае аварийной перезагрузки виртуальной машины
 
 Выставил настройки из pg_tune
 
 ```sql
+
 max_connections = 100
 shared_buffers = 1GB
 effective_cache_size = 3GB
@@ -21,12 +22,13 @@ maintenance_work_mem = 256MB
 checkpoint_completion_target = 0.9
 wal_buffers = 16MB
 default_statistics_target = 100
-random_page_cost = 4
-effective_io_concurrency = 2
+random_page_cost = 1.1
+effective_io_concurrency = 200
 work_mem = 2621kB
 huge_pages = off
 min_wal_size = 1GB
 max_wal_size = 4GB
+
 ```
 
 и асинхронный режим
