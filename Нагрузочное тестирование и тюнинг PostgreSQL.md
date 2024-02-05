@@ -125,6 +125,12 @@ sudo apt -y install sysbench
  
 GRANT ALL PRIVILEGES ON DATABASE sbtest TO sbtest;
 ```
+Для нагрузки использовал шаблон oltp_read_write.lua
+
+Значение которое удалось достичь 
+
+ transactions:                        18314  (1830.75 per sec.)
+    queries:                             366280 (36615.09 per sec.)
 
 2: подготовим 100 таблиц по 10000 строк : sysbench --db-driver=pgsql  --tables=100   --pgsql-host=localhost --pgsql-port=5433 --pgsql-user=sbtest --pgsql-password=password --pgsql-db=sbtest --report-interval=2 /usr/share/sysbench/oltp_read_write.lua prepare
 
