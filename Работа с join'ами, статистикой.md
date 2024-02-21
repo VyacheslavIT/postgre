@@ -1,6 +1,34 @@
 
 * Реализовать прямое соединение двух или более таблиц
+```sql
+  Создаем таблицу users
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(50)
+);
 
+ Создаем таблицу orders
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    user_id INT,
+    order_date DATE,
+    total_amount DECIMAL
+);
+
+Вставляем данные в таблицу users
+INSERT INTO users (username) VALUES ('Alice'), ('Bob'), ('Charlie');
+
+Вставляем данные в таблицу orders
+INSERT INTO orders (user_id, order_date, total_amount) VALUES
+(1, '2024-01-15', 100.50),
+(2, '2024-01-16', 75.25),
+(1, '2024-01-17', 50.75);
+
+Запрос с прямым соединением таблиц users и orders
+SELECT u.username, o.order_id, o.order_date, o.total_amount
+FROM users u
+JOIN orders o ON u.user_id = o.user_id;
+```
 --------------------------------
 
 
