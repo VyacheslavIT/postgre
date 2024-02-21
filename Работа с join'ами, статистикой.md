@@ -34,7 +34,35 @@ JOIN orders o ON u.user_id = o.user_id;
 
 
 * Реализовать левостороннее (или правостороннее) соединение двух или более таблиц
+ ```sql 
+Создаем таблицу departments
+CREATE TABLE departments (
+    department_id SERIAL PRIMARY KEY,
+    department_name VARCHAR(50)
+);
 
+Создаем таблицу employees
+CREATE TABLE employees (
+    employee_id SERIAL PRIMARY KEY,
+    employee_name VARCHAR(50),
+    department_id INT
+);
+
+Вставляем данные в таблицу departments
+INSERT INTO departments (department_name) VALUES ('HR'), ('IT'), ('Finance');
+
+Вставляем данные в таблицу employees
+INSERT INTO employees (employee_name, department_id) VALUES
+('Alice', 1),
+('Bob', 2),
+('Charlie', 1),
+('David', NULL);
+
+Запрос с левосторонним соединением таблиц departments и employees
+SELECT d.department_name, e.employee_name
+FROM departments d
+LEFT JOIN employees e ON d.department_id = e.department_id;
+```
 ---------------------------------
 
 
