@@ -162,14 +162,14 @@ FULL JOIN employees e ON d.department_id = e.department_id;
 * Реализовать запрос, в котором будут использованы разные типы соединений
   
 ```sql
--- Создаем таблицу orders
+Создаем таблицу orders
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     customer_id INT,
     order_date DATE
 );
 
--- Создаем таблицу customers
+Создаем таблицу customers
 CREATE TABLE customers (
     customer_id SERIAL PRIMARY KEY,
     customer_name VARCHAR(50)
