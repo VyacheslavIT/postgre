@@ -29,9 +29,12 @@ SELECT u.username, o.order_id, o.order_date, o.total_amount
 FROM users u
 JOIN orders o ON u.user_id = o.user_id;
 ```
-
-
 Результатом запроса будет таблица, содержащая данные из обеих таблиц, объединенных по условию равенства значений столбца "user_id".
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/1638fc80-4c6d-4056-82dd-dd65e625dde3)
+
+
+
 
 --------------------------------
 
