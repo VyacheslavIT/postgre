@@ -53,10 +53,10 @@ INSERT INTO departments (department_name) VALUES ('HR'), ('IT'), ('Finance');
 
 Вставляем данные в таблицу employees
 INSERT INTO employees (department_id, employee_name) VALUES
-(1,'Alice'),
-(2,'Bob'),
-(1,'Charlie'),
-(NULL,'David');
+(1,'Maxim'),
+(2,'Dima'),
+(1,'Misha'),
+(NULL,'Gena');
 
 Запрос с левосторонним соединением таблиц departments и employees
 SELECT d.department_name, e.employee_name
