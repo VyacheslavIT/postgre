@@ -12,17 +12,17 @@ CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     user_id INT,
     order_date DATE,
-    total_amount DECIMAL
+    total_amount INT
 );
 
 Вставляем данные в таблицу users
-INSERT INTO users (username) VALUES ('Alice'), ('Bob'), ('Charlie');
+INSERT INTO users (username) VALUES ('Maxim'), ('Dima'), ('Misha');
 
 Вставляем данные в таблицу orders
 INSERT INTO orders (user_id, order_date, total_amount) VALUES
-(1, '2024-01-15', 100.50),
-(2, '2024-01-16', 75.25),
-(1, '2024-01-17', 50.75);
+(1, '2024-02-19', 100),
+(2, '2024-02-20', 75),
+(1, '2024-02-21', 50);
 
 Запрос с прямым соединением таблиц users и orders
 SELECT u.username, o.order_id, o.order_date, o.total_amount
