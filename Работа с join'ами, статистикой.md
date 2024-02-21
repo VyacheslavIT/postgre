@@ -52,11 +52,11 @@ CREATE TABLE employees (
 INSERT INTO departments (department_name) VALUES ('HR'), ('IT'), ('Finance');
 
 Вставляем данные в таблицу employees
-INSERT INTO employees (employee_name, department_id) VALUES
-('Alice', 1),
-('Bob', 2),
-('Charlie', 1),
-('David', NULL);
+INSERT INTO employees (department_id, employee_name) VALUES
+(1,'Alice'),
+(2,'Bob'),
+(1,'Charlie'),
+(NULL,'David');
 
 Запрос с левосторонним соединением таблиц departments и employees
 SELECT d.department_name, e.employee_name
