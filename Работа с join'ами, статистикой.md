@@ -120,32 +120,42 @@ CROSS JOIN table2 t2;
 
 ```sql
 
-Создаем таблицу table1
-CREATE TABLE table1 (
-    id SERIAL PRIMARY KEY,
-    column1 VARCHAR(50)
+Создаем таблицу departments
+CREATE TABLE departments (
+    department_id SERIAL PRIMARY KEY,
+    department_name VARCHAR(50)
 );
 
-Создаем таблицу table2
-CREATE TABLE table2 (
-    id SERIAL PRIMARY KEY,
-    column2 VARCHAR(50)
+Создаем таблицу employees
+CREATE TABLE employees (
+    employee_id SERIAL PRIMARY KEY,
+    employee_name VARCHAR(50),
+    department_id INT
 );
 
-Вставляем данные в таблицу table1
-INSERT INTO table1 (column1) VALUES ('A'), ('B'), ('C');
+Вставляем данные в таблицу departments
+INSERT INTO departments (department_name) VALUES ('HR'), ('IT'), ('Finance'),('Marketing');
 
-Вставляем данные в таблицу table2
-INSERT INTO table2 (column2) VALUES ('X'), ('Y'), ('Z');
+Вставляем данные в таблицу employees
+INSERT INTO employees (department_id, employee_name) VALUES
+(1,'Maxim'),
+(2,'Dima'),
+(1,'Misha'),
+(NULL,'Gena'),
+(null,'Nadya'),
+(null,'Lena'),
+(null,'Marina');
 
-Запрос с полным соединением таблиц table1 и table2
-SELECT t1.column1, t2.column2
-FROM table1 t1
-FULL JOIN table2 t2 ON t1.id = t2.id;
-
+Запрос с левосторонним соединением таблиц departments и employees
+SELECT d.department_name, e.employee_name
+FROM departments d
+FULL JOIN employees e ON d.department_id = e.department_id;
 
 ```
 Результатом запроса будет таблица, содержащая все строки из обеих таблиц, дополняя отсутствующие значения NULL.
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/cabf2d72-e0cf-4407-8302-d191d1a51cfb)
+
 
 ----------------------------------
 
