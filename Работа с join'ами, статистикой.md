@@ -68,7 +68,33 @@ LEFT JOIN employees e ON d.department_id = e.department_id;
 
 * Реализовать кросс соединение двух или более таблиц
 
+```sql
 
+Создаем таблицу table1
+CREATE TABLE table1 (
+    id SERIAL PRIMARY KEY,
+    column1 VARCHAR(50)
+);
+
+Создаем таблицу table2
+CREATE TABLE table2 (
+    id SERIAL PRIMARY KEY,
+    column2 VARCHAR(50)
+);
+
+Вставляем данные в таблицу table1
+INSERT INTO table1 (column1) VALUES ('A'), ('B'), ('C');
+
+Вставляем данные в таблицу table2
+INSERT INTO table2 (column2) VALUES ('X'), ('Y'), ('Z');
+
+Запрос с кросс-соединением таблиц table1 и table2
+SELECT t1.column1, t2.column2
+FROM table1 t1
+CROSS JOIN table2 t2;
+
+
+```
 
 ---------------------------------
 
