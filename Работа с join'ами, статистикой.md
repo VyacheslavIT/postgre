@@ -212,5 +212,24 @@ WHERE o.order_date < '2024-02-01';
 
 * Задание со звездочкой*  Придумайте 3 своих метрики на основе показанных представлений, отправьте их через ЛК, а так же поделитесь с коллегами в слаке
 
+```sql
+
+Метрика для количества выполненных запросов по типу операции
+CREATE VIEW query_type_count AS
+SELECT queryid, query, calls
+FROM pg_stat_statements
+WHERE query LIKE 'select%' OR query LIKE 'update%' OR query LIKE 'delete%' order by query;
+
+
+Метрика для 10 самых медленных запросов
+CREATE VIEW slowest_queries AS
+SELECT queryid,query,(total_exec_time)/60000 as total_time_sec
+FROM pg_stat_statements
+ORDER BY total_exec_time DESC
+LIMIT 10;
+
+
+  
+```
 ----------------------------------
   
