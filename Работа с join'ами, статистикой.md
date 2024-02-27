@@ -54,23 +54,121 @@ ANALYZE users
 "  ->  Seq Scan on orders o  (cost=0.00..1.03 rows=3 width=16)"
 "  ->  Hash  (cost=1.03..1.03 rows=3 width=9)"
 "        ->  Seq Scan on users u  (cost=0.00..1.03 rows=3 width=9)"
+
+"Hash Join  (cost=1.07..2.12 rows=3 width=17) (actual time=0.069..0.071 rows=3 loops=1)"
+"  Hash Cond: (o.user_id = u.user_id)"
+"  ->  Seq Scan on orders o  (cost=0.00..1.03 rows=3 width=16) (actual time=0.041..0.041 rows=3 loops=1)"
+"  ->  Hash  (cost=1.03..1.03 rows=3 width=9) (actual time=0.020..0.020 rows=3 loops=1)"
+"        Buckets: 1024  Batches: 1  Memory Usage: 9kB"
+"        ->  Seq Scan on users u  (cost=0.00..1.03 rows=3 width=9) (actual time=0.016..0.017 rows=3 loops=1)"
+"Planning Time: 0.131 ms"
+"Execution Time: 0.092 ms"
+
 ```
 
-Стоимость запроса существенно снизилась, кол-во выбранных строк тоже стало значительно меньше. 
+Стоимость запроса существенно снизилась с 55.54 до 2.12, кол-во выбранных строк тоже стало значительно меньше. 
 
 Можно добавить индексы 
 
 CREATE INDEX ON bookings.orders (user_id);
 
 CREATE INDEX ON bookings.users (user_id);
+
+Отключим seqscan, чтобы планировщик использовал индексы
+SET enable_seqscan = OFF;
+
+```
+explain ANALYZE
+SELECT u.username, o.order_id, o.order_date, o.total_amount
+FROM users u
+JOIN orders o ON u.user_id = o.user_id;
+```
+
+
 ```sql
 "QUERY PLAN"
 "Nested Loop  (cost=0.26..22.61 rows=3 width=130)"
 "  ->  Index Scan using orders_user_id_idx on orders o  (cost=0.13..12.18 rows=3 width=16)"
 "  ->  Index Scan using users_user_id_idx on users u  (cost=0.13..4.15 rows=1 width=122)"
 "        Index Cond: (user_id = o.user_id)"
+
+"QUERY PLAN"
+"Nested Loop  (cost=0.27..20.58 rows=3 width=17) (actual time=0.057..0.061 rows=3 loops=1)"
+"  ->  Index Scan using orders_user_id_idx on orders o  (cost=0.13..12.18 rows=3 width=16) (actual time=0.034..0.035 rows=3 loops=1)"
+"  ->  Memoize  (cost=0.14..4.16 rows=1 width=9) (actual time=0.008..0.008 rows=1 loops=3)"
+"        Cache Key: o.user_id"
+"        Cache Mode: logical"
+"        Hits: 1  Misses: 2  Evictions: 0  Overflows: 0  Memory Usage: 1kB"
+"        ->  Index Scan using users_user_id_idx on users u  (cost=0.13..4.15 rows=1 width=9) (actual time=0.009..0.009 rows=1 loops=2)"
+"              Index Cond: (user_id = o.user_id)"
+"Planning Time: 0.103 ms"
+"Execution Time: 0.078 ms"
+
 ```
-Поиск идет в индексах оператор Nested Loop стоимость запроса стала меньше
+
+Поиск идет в индексах, оператор Nested Loop на небольших таблицах данный оператор работает оптимально.
+Стоимость повысилась с 2.12 до 22.61 время выполнеия запроса с индексами 0.078 ms без индексов 0.092 ms
+
+
+Сделаем большие таблицы 
+```sql
+CREATE TABLE table1 (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+INSERT INTO table1 (id, name)
+SELECT seq, 'Name' || seq
+FROM generate_series(1, 1000000) as seq;
+
+CREATE TABLE table2 (
+    id INT PRIMARY KEY,
+    value INT
+);
+
+INSERT INTO table2 (id, value)
+SELECT seq, seq * 2
+FROM generate_series(1, 1000000) as seq;
+```
+```sql
+CREATE INDEX ON table1 (id);
+
+CREATE INDEX ON table2  (id);
+
+SET enable_seqscan = on;
+
+explain ANALYZE SELECT t1.id, t1.name, t2.value
+FROM table1 t1
+INNER JOIN table2 t2 ON t1.id = t2.id;
+
+```
+```sql
+
+"QUERY PLAN"
+"Merge Join  (cost=1.48..76796.56 rows=1000000 width=18) (actual time=0.010..300.443 rows=1000000 loops=1)"
+"  Merge Cond: (t1.id = t2.id)"
+"  ->  Index Scan using table1_id_idx on table1 t1  (cost=0.42..31389.42 rows=1000000 width=14) (actual time=0.005..81.721 rows=1000000 loops=1)"
+"  ->  Index Scan using table2_id_idx on table2 t2  (cost=0.42..30408.42 rows=1000000 width=8) (actual time=0.003..77.661 rows=1000000 loops=1)"
+"Planning Time: 0.138 ms"
+"Execution Time: 315.161 ms"
+
+```
+Планировщик решает использовать Merge Join, время выполнение запроса 315.161 стоимость 76796.56
+
+```sql
+SET enable_seqscan = ON;
+
+"QUERY PLAN"
+"Hash Join  (cost=30832.00..62536.01 rows=1000000 width=18) (actual time=157.784..549.551 rows=1000000 loops=1)"
+"  Hash Cond: (t1.id = t2.id)"
+"  ->  Seq Scan on table1 t1  (cost=0.00..15406.00 rows=1000000 width=14) (actual time=0.008..33.669 rows=1000000 loops=1)"
+"  ->  Hash  (cost=14425.00..14425.00 rows=1000000 width=8) (actual time=157.102..157.103 rows=1000000 loops=1)"
+"        Buckets: 262144  Batches: 8  Memory Usage: 6935kB"
+"        ->  Seq Scan on table2 t2  (cost=0.00..14425.00 rows=1000000 width=8) (actual time=0.007..59.481 rows=1000000 loops=1)"
+"Planning Time: 0.194 ms"
+"Execution Time: 564.862 ms"
+```
+ Планировщик решает использовать Hash Join, время выполнение запроса 564.862 ms стоимость 62536.01
 --------------------------------
 
 
