@@ -219,6 +219,16 @@ LEFT JOIN employees e ON d.department_id = e.department_id;
 
 ```
 
+Обновим статистику в таблице и создадим индексы 
+```sql
+analyze departments
+analyze employees
+
+CREATE INDEX ON departments (department_id);
+CREATE INDEX ON employees (department_id)
+
+```
+
 ---------------------------------
 
 
