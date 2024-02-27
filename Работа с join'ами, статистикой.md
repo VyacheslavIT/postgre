@@ -228,6 +228,44 @@ CREATE INDEX ON departments (department_id);
 CREATE INDEX ON employees (department_id)
 
 ```
+```sql
+explain analyze
+SELECT d.department_name, e.employee_name
+FROM departments d
+LEFT JOIN employees e ON d.department_id = e.department_id;
+
+```
+
+
+```sql
+"QUERY PLAN"
+"Hash Right Join  (cost=1.07..2.13 rows=3 width=9) (actual time=0.017..0.021 rows=4 loops=1)"
+"  Hash Cond: (e.department_id = d.department_id)"
+"  ->  Seq Scan on employees e  (cost=0.00..1.04 rows=4 width=9) (actual time=0.003..0.003 rows=4 loops=1)"
+"  ->  Hash  (cost=1.03..1.03 rows=3 width=8) (actual time=0.012..0.012 rows=3 loops=1)"
+"        Buckets: 1024  Batches: 1  Memory Usage: 9kB"
+"        ->  Seq Scan on departments d  (cost=0.00..1.03 rows=3 width=8) (actual time=0.009..0.009 rows=3 loops=1)"
+"Planning Time: 0.093 ms"
+"Execution Time: 0.036 ms"
+
+``` 
+Планировщик использует оператор Hash Right Join стоимость 2.13 
+
+```sql
+SET enable_seqscan = off
+```
+
+```sql
+"QUERY PLAN"
+"Merge Left Join  (cost=0.26..24.41 rows=3 width=9) (actual time=0.014..0.017 rows=4 loops=1)"
+"  Merge Cond: (d.department_id = e.department_id)"
+"  ->  Index Scan using departments_department_id_idx on departments d  (cost=0.13..12.18 rows=3 width=8) (actual time=0.009..0.010 rows=3 loops=1)"
+"  ->  Index Scan using employees_department_id_idx on employees e  (cost=0.13..12.19 rows=4 width=9) (actual time=0.002..0.003 rows=4 loops=1)"
+"Planning Time: 0.095 ms"
+"Execution Time: 0.031 ms"
+
+```
+Планировщик использует оператор Merge Left Join стоимость 24.41 время выполнения отличается незначительно 
 
 ---------------------------------
 
