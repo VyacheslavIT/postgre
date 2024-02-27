@@ -126,6 +126,15 @@ CROSS JOIN table2 t2;
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/727bb94f-0293-4c8a-b6cc-b749dd457685)
 
+```sql
+"QUERY PLAN"
+"Nested Loop  (cost=0.00..3677.15 rows=291600 width=236)"
+"  ->  Seq Scan on table1 t1  (cost=0.00..15.40 rows=540 width=118)"
+"  ->  Materialize  (cost=0.00..18.10 rows=540 width=118)"
+"        ->  Seq Scan on table2 t2  (cost=0.00..15.40 rows=540 width=118)"
+
+```
+
 
 ---------------------------------
 
