@@ -40,16 +40,36 @@ JOIN orders o ON u.user_id = o.user_id;
 "  ->  Hash  (cost=15.40..15.40 rows=540 width=122)"
 "        ->  Seq Scan on users u  (cost=0.00..15.40 rows=540 width=122)"
 ```
-В плане запроса присутствует оператор Hash Join, также присутсует Seq Scan в таблице users  и Seq Scan в таблице orders что евляется не оптимальным для больших таблиц.
-Для оптимизации можно создать индексы 
+В плане запроса присутствует оператор Hash Join, также присутствует Seq Scan в таблице users  и Seq Scan в таблице orders что является не оптимальным для больших таблиц.
+
+Перове что сделаем обновим статистику по таблицам 
+```sql
+ANALYZE orders
+ANALYZE users
+
+"QUERY PLAN"
+"Hash Join  (cost=1.07..2.12 rows=3 width=17)"
+"  Hash Cond: (o.user_id = u.user_id)"
+"  ->  Seq Scan on orders o  (cost=0.00..1.03 rows=3 width=16)"
+"  ->  Hash  (cost=1.03..1.03 rows=3 width=9)"
+"        ->  Seq Scan on users u  (cost=0.00..1.03 rows=3 width=9)"
+```
+
+Стоимость запроса существенно снизилась, кол-во выбранных строк тоже стало значительно меньше. 
+
+Можно добавить индексы 
 
 CREATE INDEX ON bookings.orders (user_id);
 
 CREATE INDEX ON bookings.users (user_id);
 
-![image](https://github.com/VyacheslavIT/postgre/assets/136000255/3ee59a74-ed41-4a0e-a0bc-9bc8633faf2e)
+"QUERY PLAN"
+"Nested Loop  (cost=0.26..22.61 rows=3 width=130)"
+"  ->  Index Scan using orders_user_id_idx on orders o  (cost=0.13..12.18 rows=3 width=16)"
+"  ->  Index Scan using users_user_id_idx on users u  (cost=0.13..4.15 rows=1 width=122)"
+"        Index Cond: (user_id = o.user_id)"
 
-
+Поиск идет в индексах оператор Nested Loop стоимость запроса стала меньше
 --------------------------------
 
 
