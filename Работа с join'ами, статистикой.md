@@ -79,6 +79,16 @@ LEFT JOIN employees e ON d.department_id = e.department_id;
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/b7917c71-f4f3-415b-b42e-e1404334a81a)
 
+```sql
+
+"Hash Right Join  (cost=22.15..38.85 rows=540 width=236)"
+"  Hash Cond: (e.department_id = d.department_id)"
+"  ->  Seq Scan on employees e  (cost=0.00..15.30 rows=530 width=122)"
+"  ->  Hash  (cost=15.40..15.40 rows=540 width=122)"
+"        ->  Seq Scan on departments d  (cost=0.00..15.40 rows=540 width=122)"
+
+```
+
 ---------------------------------
 
 
