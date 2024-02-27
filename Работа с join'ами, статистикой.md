@@ -43,6 +43,7 @@ JOIN orders o ON u.user_id = o.user_id;
 В плане запроса присутствует оператор Hash Join, также присутствует Seq Scan в таблице users  и Seq Scan в таблице orders что является не оптимальным для больших таблиц.
 
 Обновим статистику по таблицам 
+
 ```sql
 ANALYZE orders
 ANALYZE users
@@ -62,13 +63,13 @@ ANALYZE users
 CREATE INDEX ON bookings.orders (user_id);
 
 CREATE INDEX ON bookings.users (user_id);
-
+```sql
 "QUERY PLAN"
 "Nested Loop  (cost=0.26..22.61 rows=3 width=130)"
 "  ->  Index Scan using orders_user_id_idx on orders o  (cost=0.13..12.18 rows=3 width=16)"
 "  ->  Index Scan using users_user_id_idx on users u  (cost=0.13..4.15 rows=1 width=122)"
 "        Index Cond: (user_id = o.user_id)"
-
+```
 Поиск идет в индексах оператор Nested Loop стоимость запроса стала меньше
 --------------------------------
 
