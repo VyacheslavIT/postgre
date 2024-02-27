@@ -246,6 +246,23 @@ FULL JOIN items_order i ON c.customer_id =i.customer_id
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/576a9ca6-0f7a-41ac-b9c3-ac1ea4c300d7)
 
+```sql
+"QUERY PLAN"
+"Hash Full Join  (cost=129.55..168.85 rows=2040 width=362)"
+"  Hash Cond: (i.customer_id = c.customer_id)"
+"  ->  Seq Scan on items_order i  (cost=0.00..15.30 rows=530 width=122)"
+"  ->  Hash  (cost=104.05..104.05 rows=2040 width=248)"
+"        ->  Hash Join  (cost=45.60..104.05 rows=2040 width=248)"
+"              Hash Cond: (o.customer_id = c.customer_id)"
+"              ->  Seq Scan on orders o  (cost=0.00..30.40 rows=2040 width=12)"
+"              ->  Hash  (cost=38.85..38.85 rows=540 width=240)"
+"                    ->  Hash Right Join  (cost=22.15..38.85 rows=540 width=240)"
+"                          Hash Cond: (a.customer_id = c.customer_id)"
+"                          ->  Seq Scan on address a  (cost=0.00..15.30 rows=530 width=122)"
+"                          ->  Hash  (cost=15.40..15.40 rows=540 width=122)"
+"                                ->  Seq Scan on customers c  (cost=0.00..15.40 rows=540 width=122)"
+
+```
 
 
 ----------------------------------
