@@ -175,9 +175,18 @@ CREATE TABLE customers (
     customer_name VARCHAR(50)
 );
 
+Создаем таблицу address
 CREATE TABLE address (
-    customer_id SERIAL PRIMARY KEY,
+    address_id SERIAL PRIMARY KEY,
+    customer_id INT,
     customer_address VARCHAR(50)
+);
+
+Создаем таблицу items_order
+CREATE TABLE items_order (
+    items_id SERIAL PRIMARY KEY,
+	customer_id INT,
+    items_name VARCHAR(50)
 );
 
 Вставляем данные в таблицу orders
@@ -185,8 +194,12 @@ INSERT INTO orders (customer_id, order_date) VALUES (1, '2024-01-15'), (2, '2024
 
 Вставляем данные в таблицу customers
 INSERT INTO customers (customer_name) VALUES ('Alice'), ('Bob');
+
 Вставляем данные в таблицу address
 INSERT INTO address (customer_id, customer_address) VALUES (1, 'Moscow'), (2, 'Kazan'), (3, 'Ekaterinburg');
+
+Вставляем данные в таблицу address
+INSERT INTO items_order (customer_id, items_name) VALUES (1, 'Шоколад'), (2, 'Машина'), (3, 'Конфеты');
 
 Запрос с разными типами соединений
 
