@@ -175,27 +175,21 @@ CREATE TABLE customers (
     customer_name VARCHAR(50)
 );
 
+CREATE TABLE address (
+    customer_id SERIAL PRIMARY KEY,
+    customer_address VARCHAR(50)
+);
+
 Вставляем данные в таблицу orders
 INSERT INTO orders (customer_id, order_date) VALUES (1, '2024-01-15'), (2, '2024-01-20'), (1, '2024-02-05');
 
 Вставляем данные в таблицу customers
 INSERT INTO customers (customer_name) VALUES ('Alice'), ('Bob');
+Вставляем данные в таблицу address
+INSERT INTO address (customer_id, customer_address) VALUES (1, 'Moscow'), (2, 'Kazan'), (3, 'Ekaterinburg');
 
 Запрос с разными типами соединений
-SELECT o.order_id, c.customer_name
-FROM orders o
-INNER JOIN customers c ON o.customer_id = c.customer_id
-WHERE o.order_date >= '2024-01-01'
-UNION
-SELECT o.order_id, c.customer_name
-FROM orders o
-LEFT JOIN customers c ON o.customer_id = c.customer_id
-WHERE c.customer_id IS NULL
-UNION
-SELECT o.order_id, c.customer_name
-FROM orders o
-RIGHT JOIN customers c ON o.customer_id = c.customer_id
-WHERE o.order_date < '2024-02-01';
+
 
 ```
 
