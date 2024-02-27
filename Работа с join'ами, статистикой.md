@@ -41,7 +41,14 @@ JOIN orders o ON u.user_id = o.user_id;
 "        ->  Seq Scan on users u  (cost=0.00..15.40 rows=540 width=122)"
 ```
 В плане запроса присутствует оператор Hash Join, также присутсует Seq Scan в таблице users  и Seq Scan в таблице orders что евляется не оптимальным для больших таблиц.
-Для оптимизации можно создать индекс   
+Для оптимизации можно создать индексы 
+
+CREATE INDEX ON bookings.orders (user_id);
+
+CREATE INDEX ON bookings.users (user_id);
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/3ee59a74-ed41-4a0e-a0bc-9bc8633faf2e)
+
 
 --------------------------------
 
