@@ -203,15 +203,19 @@ INSERT INTO items_order (customer_id, items_name) VALUES (1, 'Шоколад'), 
 
 Запрос с разными типами соединений
 
+SELECT o.order_id, c.customer_name, a.customer_address, o.order_date,i.items_name
+FROM orders o
+INNER JOIN customers c ON o.customer_id = c.customer_id
+LEFT JOIN address a ON c.customer_id = a.customer_id
+FULL JOIN items_order i ON c.customer_id =i.customer_id
+
 
 ```
 
-1 INNER JOIN: Возвращает только те строки, для которых есть соответствие в обеих таблицах.
-2 LEFT JOIN: Возвращает все строки из левой таблицы (orders) и соответствующие строки из правой таблицы (customers), если они есть.
-3 RIGHT JOIN: Возвращает все строки из правой таблицы (customers) и соответствующие строки из левой таблицы (orders), если они есть.
-Запрос объединяет данные из таблиц "orders" и "customers" с использованием различных типов соединений и добавляет условия для фильтрации результатов.
 
-![image](https://github.com/VyacheslavIT/postgre/assets/136000255/050574e1-2faf-43ce-8d16-02c943430de0)
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/576a9ca6-0f7a-41ac-b9c3-ac1ea4c300d7)
+
 
 
 ----------------------------------
