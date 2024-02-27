@@ -179,6 +179,15 @@ FULL JOIN employees e ON d.department_id = e.department_id;
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/cabf2d72-e0cf-4407-8302-d191d1a51cfb)
 
+```sql
+"QUERY PLAN"
+"Hash Full Join  (cost=22.15..38.85 rows=540 width=236)"
+"  Hash Cond: (e.department_id = d.department_id)"
+"  ->  Seq Scan on employees e  (cost=0.00..15.30 rows=530 width=122)"
+"  ->  Hash  (cost=15.40..15.40 rows=540 width=122)"
+"        ->  Seq Scan on departments d  (cost=0.00..15.40 rows=540 width=122)"
+
+```
 
 ----------------------------------
 
