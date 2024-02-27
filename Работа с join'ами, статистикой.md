@@ -229,7 +229,20 @@ ORDER BY total_exec_time DESC
 LIMIT 10;
 
 
-  
+Метрика содержит информацию о времени выполнения запросов.
+CREATE VIEW query_execution_times_view AS
+SELECT pid, query_start, now() - query_start AS execution_time
+FROM pg_stat_activity
+WHERE state = 'active';
+
+Метрика содержит информацию о текущих активных соединениях к базе данных.
+CREATE VIEW active_connections_view AS
+SELECT pid, application_name, client_addr, query
+FROM pg_stat_activity
+WHERE state = 'active';
+
 ```
+
+
 ----------------------------------
   
