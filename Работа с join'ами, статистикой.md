@@ -208,7 +208,6 @@ INNER JOIN customers c ON o.customer_id = c.customer_id
 LEFT JOIN address a ON c.customer_id = a.customer_id
 FULL JOIN items_order i ON c.customer_id =i.customer_id
 
-
 ```
 
 
