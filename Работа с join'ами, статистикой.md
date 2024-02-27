@@ -202,7 +202,6 @@ INSERT INTO address (customer_id, customer_address) VALUES (1, 'Moscow'), (2, 'K
 INSERT INTO items_order (customer_id, items_name) VALUES (1, 'Шоколад'), (2, 'Машина'), (3, 'Конфеты');
 
 Запрос с разными типами соединений
-
 SELECT o.order_id, c.customer_name, a.customer_address, o.order_date,i.items_name
 FROM orders o
 INNER JOIN customers c ON o.customer_id = c.customer_id
