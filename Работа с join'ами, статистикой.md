@@ -33,9 +33,13 @@ JOIN orders o ON u.user_id = o.user_id;
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/1638fc80-4c6d-4056-82dd-dd65e625dde3)
 
-
-
-
+```sql
+"Hash Join  (cost=22.15..55.54 rows=1850 width=130)"
+"  Hash Cond: (o.user_id = u.user_id)"
+"  ->  Seq Scan on orders o  (cost=0.00..28.50 rows=1850 width=16)"
+"  ->  Hash  (cost=15.40..15.40 rows=540 width=122)"
+"        ->  Seq Scan on users u  (cost=0.00..15.40 rows=540 width=122)"
+```
 --------------------------------
 
 
