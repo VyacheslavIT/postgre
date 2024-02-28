@@ -156,7 +156,7 @@ INNER JOIN table2 t2 ON t1.id = t2.id;
 "Execution Time: 315.161 ms"
 
 ```
-Планировщик решает использовать Merge Join, время выполнение запроса 315.161 стоимость 76796.56
+Планировщик решает использовать Merge Join, время выполнение запроса 315.161 стоимость 76796.56, кол-во выбранных строк совпадает с количеством строк в таблице.
 
 ```sql
 SET enable_seqscan = ON;
@@ -171,7 +171,7 @@ SET enable_seqscan = ON;
 "Planning Time: 0.194 ms"
 "Execution Time: 564.862 ms"
 ```
- Планировщик решает использовать Hash Join, время выполнение запроса 564.862 ms стоимость 62536.01
+ Планировщик решает использовать Hash Join, время выполнение запроса 564.862 ms стоимость 62536.01, кол-во выбранных строк совпадает с количеством строк в таблице.
  
 --------------------------------
 
@@ -252,7 +252,7 @@ LEFT JOIN employees e ON d.department_id = e.department_id;
 "Execution Time: 0.036 ms"
 
 ``` 
-Планировщик использует оператор Hash Right Join стоимость 2.13 
+Планировщик использует оператор Hash Right Join стоимость 2.13. 
 
 ```sql
 SET enable_seqscan = off
@@ -268,7 +268,7 @@ SET enable_seqscan = off
 "Execution Time: 0.031 ms"
 
 ```
-Планировщик использует оператор Merge Left Join стоимость 24.41 время выполнения отличается незначительно 
+Планировщик использует оператор Merge Left Join стоимость 24.41 время выполнения отличается незначительно.
 
 Сделаем большие таблицы 
 
@@ -304,6 +304,37 @@ analyze table1
 analyze table2
 
 ```
+
+```sql
+"QUERY PLAN"
+"Hash Right Join  (cost=32789.00..66337.01 rows=1000000 width=27) (actual time=117.475..531.383 rows=1000000 loops=1)"
+"  Hash Cond: (t2.id = t1.id)"
+"  ->  Seq Scan on table2 t2  (cost=0.00..16274.00 rows=1000000 width=16) (actual time=0.023..62.471 rows=1000000 loops=1)"
+"  ->  Hash  (cost=15406.00..15406.00 rows=1000000 width=15) (actual time=116.757..116.758 rows=1000000 loops=1)"
+"        Buckets: 262144  Batches: 8  Memory Usage: 7898kB"
+"        ->  Seq Scan on table1 t1  (cost=0.00..15406.00 rows=1000000 width=15) (actual time=0.008..33.850 rows=1000000 loops=1)"
+"Planning Time: 0.205 ms"
+"Execution Time: 546.754 ms"
+
+```
+
+```sql
+SET enable_seqscan = OFF;
+```
+
+```sql
+
+"QUERY PLAN"
+"Merge Left Join  (cost=1.34..78646.85 rows=1000000 width=27) (actual time=0.032..331.193 rows=1000000 loops=1)"
+"  Merge Cond: (t1.id = t2.id)"
+"  ->  Index Scan using table1_id_idx on table1 t1  (cost=0.42..31389.42 rows=1000000 width=15) (actual time=0.006..93.611 rows=1000000 loops=1)"
+"  ->  Index Scan using table2_id_idx on table2 t2  (cost=0.42..32257.42 rows=1000000 width=16) (actual time=0.023..94.066 rows=1000000 loops=1)"
+"Planning Time: 0.148 ms"
+"Execution Time: 346.146 ms"
+
+```
+
+На больших таблицах операторы остались прежними, время выполнения 346ms, стоимость запроса возросла, кол-во выбранных строк совпадает с количеством строк в таблице.
 
 ---------------------------------
 
