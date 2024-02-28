@@ -138,7 +138,7 @@ CREATE INDEX ON table1 (id);
 
 CREATE INDEX ON table2  (id);
 
-SET enable_seqscan = on;
+SET enable_seqscan = OFF;
 
 explain ANALYZE SELECT t1.id, t1.name, t2.value
 FROM table1 t1
