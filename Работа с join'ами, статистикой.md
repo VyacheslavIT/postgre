@@ -37,7 +37,7 @@ JOIN orders o ON u.user_id = o.user_id;
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/a6e4f38d-9aad-49b8-b8e8-b4fa43b8ed2f)
 
-В статистике по таблицам видно был seq scan,строки indexscan 0
+В статистике по таблицам видно был seq scan, indexscan 0
 
 ```sql
 "Hash Join  (cost=22.15..55.54 rows=1850 width=130)"
