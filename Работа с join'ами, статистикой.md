@@ -298,7 +298,10 @@ FROM
 
 SELECT t1.id, t1.name, t2.value
 FROM table1 t1
-LEFT JOIN table2 t2 ON t1.id = t2.id; 
+LEFT JOIN table2 t2 ON t1.id = t2.id;
+
+analyze table1
+analyze table2
 
 ```
 
