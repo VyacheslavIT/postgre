@@ -118,6 +118,11 @@ JOIN orders o ON u.user_id = o.user_id;
 Поиск идет в индексах, оператор Nested Loop.
 Стоимость повысилась с 2.12 до 22.61 время выполнеия запроса с индексами 0.078 ms без индексов 0.092 ms,кол-во выбранных строк совпадает с кол-вом строк в таблицах.
 
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/e2ce229e-d6d7-4c63-afa8-0411c39f9dc3)
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/d0b9f711-0cf0-4907-88cd-440365d55393)
+
+В статистике по таблицам  indexscan появилось значение и сколько строк было прочитано в index
 
 Сделаем большие таблицы 
 ```sql
