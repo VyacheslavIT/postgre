@@ -225,6 +225,13 @@ LEFT JOIN employees e ON d.department_id = e.department_id;
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/b7917c71-f4f3-415b-b42e-e1404334a81a)
 
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/bb3d29a8-56c5-46fc-a147-1a8891e33d40)
+
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/36549c2a-5d09-4899-b527-8ee48c1cdd77)
+
+В статистике по таблицам есть значение количество последовательных чтений, произведённых в этой таблице,количество «живых» строк, прочитанных при последовательных чтениях
+количество сканирований по индексу, произведённых в этой таблице = 0,количество «живых» строк, отобранных при сканированиях по индексу 
+
 ```sql
 
 "Hash Right Join  (cost=22.15..38.85 rows=540 width=236)"
