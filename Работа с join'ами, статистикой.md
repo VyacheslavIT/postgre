@@ -270,6 +270,38 @@ SET enable_seqscan = off
 ```
 Планировщик использует оператор Merge Left Join стоимость 24.41 время выполнения отличается незначительно 
 
+Сделаем большие таблицы 
+
+```sql
+CREATE TABLE table1 (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+INSERT INTO table1 (id, name)
+SELECT
+    n, CONCAT('Name ', n)
+FROM 
+    generate_series(1, 1000000) n;
+
+
+CREATE TABLE table2 (
+    id INT PRIMARY KEY,
+    value VARCHAR(50)
+);
+
+INSERT INTO table2 (id, value)
+SELECT
+    n, CONCAT('Value ', n)
+FROM 
+    generate_series(1, 1000000) n;
+
+SELECT t1.id, t1.name, t2.value
+FROM table1 t1
+LEFT JOIN table2 t2 ON t1.id = t2.id; 
+
+```
+
 ---------------------------------
 
 
