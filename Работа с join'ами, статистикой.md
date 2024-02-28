@@ -33,6 +33,10 @@ JOIN orders o ON u.user_id = o.user_id;
 
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/1638fc80-4c6d-4056-82dd-dd65e625dde3)
 
+![image](https://github.com/VyacheslavIT/postgre/assets/136000255/f3f39959-4b61-49db-a40e-739e648a1169)
+
+В статистике по таблице видно был seq scan прочитано 3 строки 
+
 ```sql
 "Hash Join  (cost=22.15..55.54 rows=1850 width=130)"
 "  Hash Cond: (o.user_id = u.user_id)"
