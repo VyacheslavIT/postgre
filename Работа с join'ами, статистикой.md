@@ -452,7 +452,7 @@ select * from pg_stat_user_tables where relname = 'table1';
 select * from pg_stat_user_tables where relname = 'table2';
 
 ```
-В статистеке по таблице
+В статистике по таблице
 
 количество сканирований по индексу, произведённых в этой таблице  = 3
 
