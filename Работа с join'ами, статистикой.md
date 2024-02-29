@@ -420,7 +420,47 @@ CREATE INDEX ON table2 (column2)
 
 ```
 
-Планировщик решает использовать Nested Loop, стоимость 2.18 ,кол-во выбранных строк совпадает с количеством строк в таблице.
+Планировщик решает использовать Nested Loop, стоимость 2.18 ,кол-во выбранных строк совпадает с количеством строк в таблице, время выполнения 0.031 ms
+
+```sql
+
+SET enable_seqscan = OFF;
+
+"QUERY PLAN"
+"Nested Loop  (cost=0.26..24.47 rows=9 width=4) (actual time=0.015..0.018 rows=9 loops=1)"
+"  ->  Index Only Scan using table1_column1_idx on table1 t1  (cost=0.13..12.18 rows=3 width=2) (actual time=0.010..0.010 rows=3 loops=1)"
+"        Heap Fetches: 3"
+"  ->  Materialize  (cost=0.13..12.19 rows=3 width=2) (actual time=0.001..0.002 rows=3 loops=3)"
+"        ->  Index Only Scan using table2_column2_idx on table2 t2  (cost=0.13..12.18 rows=3 width=2) (actual time=0.003..0.003 rows=3 loops=1)"
+"              Heap Fetches: 3"
+"Planning Time: 0.058 ms"
+"Execution Time: 0.031 ms"
+
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25232"	"public"	"table1"	      5	              12	    3	               9
+
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25239"	"public"	"table2"	    5	              12	     3	               9
+
+```
+
+Планировщик также решает использовать Nested Loop, стоимость 24.47 ,кол-во выбранных строк совпадает с количеством строк в таблице, время выполнения 0.031 ms
+
+```sql
+select * from pg_stat_user_tables where relname = 'table1';
+
+select * from pg_stat_user_tables where relname = 'table2';
+
+```
+В статистеке по таблице
+
+количество сканирований по индексу, произведённых в этой таблице  = 3
+
+количество «живых» строк, отобранных при сканированиях по индексу = 9
+
+количество последовательных чтений, произведённых в этой таблице = 5
+
+количество «живых» строк, прочитанных при последовательных чтениях не изменилось = 12
 
 ---------------------------------
 
