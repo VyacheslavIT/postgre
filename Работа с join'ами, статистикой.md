@@ -394,6 +394,14 @@ SELECT t1.column1, t2.column2
 FROM table1 t1
 CROSS JOIN table2 t2;
 
+Сразу обновляем статистику по таблицам
+analyze table1
+analyze table2
+```
+Создадим индексы
+```sql
+CREATE INDEX ON table1 (column1)
+CREATE INDEX ON table2 (column2)
 
 ```
 
@@ -403,13 +411,16 @@ CROSS JOIN table2 t2;
 
 ```sql
 "QUERY PLAN"
-"Nested Loop  (cost=0.00..3677.15 rows=291600 width=236)"
-"  ->  Seq Scan on table1 t1  (cost=0.00..15.40 rows=540 width=118)"
-"  ->  Materialize  (cost=0.00..18.10 rows=540 width=118)"
-"        ->  Seq Scan on table2 t2  (cost=0.00..15.40 rows=540 width=118)"
+"Nested Loop  (cost=0.00..2.18 rows=9 width=4) (actual time=0.010..0.012 rows=9 loops=1)"
+"  ->  Seq Scan on table1 t1  (cost=0.00..1.03 rows=3 width=2) (actual time=0.004..0.004 rows=3 loops=1)"
+"  ->  Materialize  (cost=0.00..1.04 rows=3 width=2) (actual time=0.002..0.002 rows=3 loops=3)"
+"        ->  Seq Scan on table2 t2  (cost=0.00..1.03 rows=3 width=2) (actual time=0.002..0.003 rows=3 loops=1)"
+"Planning Time: 0.316 ms"
+"Execution Time: 0.031 ms"
 
 ```
 
+Планировщик решает использовать Nested Loop, стоимость 2.18 ,кол-во выбранных строк совпадает с количеством строк в таблице.
 
 ---------------------------------
 
