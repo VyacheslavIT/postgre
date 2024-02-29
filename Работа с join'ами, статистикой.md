@@ -514,7 +514,70 @@ FULL JOIN employees e ON d.department_id = e.department_id;
 "        ->  Seq Scan on departments d  (cost=0.00..15.40 rows=540 width=122)"
 
 ```
+```sql
+CREATE INDEX ON departments (department_id)
+CREATE INDEX ON employees (department_id)
 
+analyze departments
+analyze employees
+
+```
+
+```sql
+"QUERY PLAN"
+"Hash Full Join  (cost=1.09..2.19 rows=7 width=11) (actual time=0.019..0.022 rows=9 loops=1)"
+"  Hash Cond: (e.department_id = d.department_id)"
+"  ->  Seq Scan on employees e  (cost=0.00..1.07 rows=7 width=9) (actual time=0.003..0.004 rows=7 loops=1)"
+"  ->  Hash  (cost=1.04..1.04 rows=4 width=10) (actual time=0.012..0.012 rows=4 loops=1)"
+"        Buckets: 1024  Batches: 1  Memory Usage: 9kB"
+"        ->  Seq Scan on departments d  (cost=0.00..1.04 rows=4 width=10) (actual time=0.008..0.008 rows=4 loops=1)"
+"Planning Time: 0.081 ms"
+"Execution Time: 0.039 ms"
+
+
+```
+Планировщик решает использовать Hash Full Join,Seq Scan, стоимость 2.19 ,кол-во выбранных строк совпадает с количеством строк в таблице, время выполнения 0.039 ms
+
+```sql
+SET enable_seqscan = off;
+
+"QUERY PLAN"
+"Merge Full Join  (cost=0.26..24.48 rows=7 width=11) (actual time=0.018..0.021 rows=9 loops=1)"
+"  Merge Cond: (d.department_id = e.department_id)"
+"  ->  Index Scan using departments_department_id_idx on departments d  (cost=0.13..12.19 rows=4 width=10) (actual time=0.012..0.013 rows=4 loops=1)"
+"  ->  Index Scan using employees_department_id_idx on employees e  (cost=0.13..12.24 rows=7 width=9) (actual time=0.003..0.004 rows=7 loops=1)"
+"Planning Time: 0.084 ms"
+"Execution Time: 0.036 ms"
+
+
+```
+Планировщик решает использовать Merge Full Join,Index Scan,стоимость 24.48 ,кол-во выбранных строк совпадает с количеством строк в таблице, время выполнения 0.036 ms
+
+```sql
+select * from pg_stat_user_tables where relname = 'departments';
+
+select * from pg_stat_user_tables where relname = 'employees';
+
+```
+
+```sql
+
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25248"	"public"	"departments"	     5	              16	     4	                16
+
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25255"	"public"	"employees"	    7	              42	     2	               14
+```
+
+В статистеке по таблице
+
+количество сканирований по индексу, произведённых в этой таблице  = 4,2
+
+количество «живых» строк, отобранных при сканированиях по индексу = 16,14
+
+количество последовательных чтений, произведённых в этой таблице = 5,7
+
+количество «живых» строк, прочитанных при последовательных чтениях не изменилось = 16,42
 ----------------------------------
 
 * Реализовать запрос, в котором будут использованы разные типы соединений
