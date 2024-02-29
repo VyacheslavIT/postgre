@@ -184,7 +184,7 @@ SET enable_seqscan = ON;
 "Planning Time: 0.194 ms"
 "Execution Time: 564.862 ms"
 ```
- Планировщик решает использовать Hash Join, Seq Scan, время выполнение запроса 564.862 ms стоимость 62536.01,кол-во выбранных строк совпадает с количеством строк в таблице.
+ Планировщик решает использовать Hash Join, Seq Scan,время выполнение запроса 564.862 ms стоимость 62536.01,кол-во выбранных строк совпадает с количеством строк в таблице.
  
 --------------------------------
 
@@ -362,7 +362,7 @@ SET enable_seqscan = OFF;
 
 ```
 
-На больших таблицах операторы остались прежними, время выполнения 346ms, стоимость запроса возросла,кол-во выбранных строк совпадает с количеством строк в таблице.
+На больших таблицах операторы остались прежними,стоимость 78646.85, время выполнения 346ms, стоимость запроса возросла,кол-во выбранных строк совпадает с количеством строк в таблице.
 
 ---------------------------------
 
@@ -632,8 +632,6 @@ FULL JOIN items_order i ON c.customer_id =i.customer_id
 
 ```
 
-
-
 ![image](https://github.com/VyacheslavIT/postgre/assets/136000255/576a9ca6-0f7a-41ac-b9c3-ac1ea4c300d7)
 
 ```sql
@@ -654,6 +652,103 @@ FULL JOIN items_order i ON c.customer_id =i.customer_id
 
 ```
 
+```sql
+CREATE INDEX ON orders (customer_id)
+CREATE INDEX ON customers (customer_id)
+CREATE INDEX ON address (customer_id)
+CREATE INDEX ON items_order (customer_id)
+
+analyze orders
+analyze customers
+analyze address
+analyze items_order
+
+````
+```sql
+"QUERY PLAN"
+"Hash Full Join  (cost=2.11..4.33 rows=3 width=35) (actual time=0.032..0.041 rows=4 loops=1)"
+"  Hash Cond: (c.customer_id = i.customer_id)"
+"  ->  Nested Loop  (cost=1.04..3.22 rows=3 width=25) (actual time=0.016..0.021 rows=3 loops=1)"
+"        Join Filter: (c.customer_id = o.customer_id)"
+"        Rows Removed by Join Filter: 3"
+"        ->  Seq Scan on orders o  (cost=0.00..1.03 rows=3 width=12) (actual time=0.002..0.002 rows=3 loops=1)"
+"        ->  Materialize  (cost=1.04..2.10 rows=2 width=17) (actual time=0.004..0.005 rows=2 loops=3)"
+"              ->  Hash Right Join  (cost=1.04..2.09 rows=2 width=17) (actual time=0.010..0.013 rows=2 loops=1)"
+"                    Hash Cond: (a.customer_id = c.customer_id)"
+"                    ->  Seq Scan on address a  (cost=0.00..1.03 rows=3 width=12) (actual time=0.002..0.002 rows=3 loops=1)"
+"                    ->  Hash  (cost=1.02..1.02 rows=2 width=9) (actual time=0.003..0.003 rows=2 loops=1)"
+"                          Buckets: 1024  Batches: 1  Memory Usage: 9kB"
+"                          ->  Seq Scan on customers c  (cost=0.00..1.02 rows=2 width=9) (actual time=0.002..0.002 rows=2 loops=1)"
+"  ->  Hash  (cost=1.03..1.03 rows=3 width=18) (actual time=0.010..0.010 rows=3 loops=1)"
+"        Buckets: 1024  Batches: 1  Memory Usage: 9kB"
+"        ->  Seq Scan on items_order i  (cost=0.00..1.03 rows=3 width=18) (actual time=0.005..0.006 rows=3 loops=1)"
+"Planning Time: 0.526 ms"
+"Execution Time: 0.062 ms"
+
+```
+
+Планировщик решает использовать Hash Full Join,Nested Loop,Hash Right Join,Seq Scan,кол-во выбранных строк совпадает с количеством строк в таблице, время выполнения 0.062 ms
+
+```sql
+SET enable_seqscan = OFF;
+
+```
+
+```sql
+"QUERY PLAN"
+"Merge Full Join  (cost=0.53..40.54 rows=3 width=35) (actual time=0.078..0.087 rows=4 loops=1)"
+"  Merge Cond: (c.customer_id = i.customer_id)"
+"  ->  Merge Left Join  (cost=0.40..28.32 rows=3 width=25) (actual time=0.056..0.063 rows=3 loops=1)"
+"        Merge Cond: (c.customer_id = a.customer_id)"
+"        ->  Nested Loop  (cost=0.27..20.12 rows=3 width=17) (actual time=0.051..0.057 rows=3 loops=1)"
+"              ->  Index Scan using orders_customer_id_idx on orders o  (cost=0.13..12.18 rows=3 width=12) (actual time=0.038..0.039 rows=3 loops=1)"
+"              ->  Memoize  (cost=0.14..4.15 rows=1 width=9) (actual time=0.005..0.005 rows=1 loops=3)"
+"                    Cache Key: o.customer_id"
+"                    Cache Mode: logical"
+"                    Hits: 1  Misses: 2  Evictions: 0  Overflows: 0  Memory Usage: 1kB"
+"                    ->  Index Scan using customers_customer_id_idx on customers c  (cost=0.13..4.14 rows=1 width=9) (actual time=0.004..0.004 rows=1 loops=2)"
+"                          Index Cond: (customer_id = o.customer_id)"
+"        ->  Index Scan using address_customer_id_idx on address a  (cost=0.13..12.18 rows=3 width=12) (actual time=0.003..0.003 rows=4 loops=1)"
+"  ->  Index Scan using items_order_customer_id_idx on items_order i  (cost=0.13..12.18 rows=3 width=18) (actual time=0.021..0.022 rows=4 loops=1)"
+"Planning Time: 0.279 ms"
+"Execution Time: 0.130 ms"
+
+```
+
+Планировщик решает использовать Merge Full Join,Merge Left Join,Nested Loop,Index Scan,кол-во выбранных строк совпадает с количеством строк в таблице, время выполнения 0.130 ms
+
+```sql
+select * from pg_stat_user_tables where relname = 'orders';
+select * from pg_stat_user_tables where relname = 'customers';
+select * from pg_stat_user_tables where relname = 'address';
+select * from pg_stat_user_tables where relname = 'items_order';
+
+```
+```sql
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25264"	"public"	"orders"	    4	               9	    1	              3
+
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25271"	"public"	"customers"	    4	               6	    10	              10
+
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25278"	"public"	"address"	    4	              9	            5	              8
+
+"relid"	"schemaname"	"relname"	"seq_scan"	"seq_tup_read"	"idx_scan"	"idx_tup_fetch"
+"25285"	"public"	"items_order"	    4	              9	            1	              4
+
+```
+
+
+В статистике по таблице
+
+количество сканирований по индексу, произведённых в этой таблице  = 1,10,5,1
+
+количество «живых» строк, отобранных при сканированиях по индексу = 3,10,8,4
+
+количество последовательных чтений, произведённых в этой таблице = 4
+
+количество «живых» строк, прочитанных при последовательных чтениях не изменилось = 9,6
 
 ----------------------------------
 
